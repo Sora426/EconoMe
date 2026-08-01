@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<%- include("../partials/head",{title:"My Progress"}) %>
+
+</head>
+
+<body>
+
+<%- include("../partials/navbar") %>
+
+<div class="content">
+
+<h1>My Quiz History</h1>
+
+<table border="1" cellpadding="10">
+
+<tr>
+
+<th>Quiz</th>
+
+<th>Score</th>
+
+<th>Percentage</th>
+
+<th>Date</th>
+
+</tr>
+
+<% results.forEach(r=>{ %>
+
+<tr>
+
+<td>
+
+<%= r.title %>
+
+</td>
+
+<td>
+
+<%= r.score %>/<%= r.total %>
+
+</td>
+
+<td>
+
+<%= Math.round(r.score/r.total*100) %>%
+
+</td>
+
+<td>
+
+<%= r.createdAt %>
+
+</td>
+
+</tr>
+
+<% }) %>
+
+</table>
+
+</div>
+
+</body>
+
+</html>

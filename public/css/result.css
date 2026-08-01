@@ -1,0 +1,296 @@
+/* ==========================
+   MONEY RAIN
+========================== */
+
+#money-rain{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    z-index:99999;
+
+}
+
+.money{
+
+    position:absolute;
+
+    top:-60px;
+
+    animation:fall linear forwards;
+
+    user-select:none;
+
+}
+
+@keyframes fall{
+
+    from{
+
+        transform:
+        translateY(-50px)
+        rotate(0deg);
+
+        opacity:1;
+
+    }
+
+    to{
+
+        transform:
+        translateY(120vh)
+        rotate(720deg);
+
+        opacity:.9;
+
+    }
+
+}
+/* ===========================
+   RESULT PAGE
+=========================== */
+
+/* ==========================
+   RESULT PAGE
+========================== */
+
+body{
+
+    background:#F7F8FC;
+    font-family:"Poppins",sans-serif;
+    color:#1E293B;
+
+}
+
+.content{
+
+    max-width:750px;
+    margin:40px auto;
+    padding:20px;
+
+}
+
+/* ==========================
+   SCORE
+========================== */
+
+.content h1{
+
+    text-align:center;
+    color:#0F172A;
+    font-size:34px;
+    margin-bottom:10px;
+
+}
+
+.content h2{
+
+    text-align:center;
+    font-size:24px;
+    color:#475569;
+    margin:5px 0;
+
+}
+
+.persentshow{
+
+    text-align:center;
+    color:#D4AF37;
+    font-size:48px;
+    margin:10px 0 30px;
+
+}
+
+hr{
+
+    border:none;
+    height:1px;
+    background:#E5E7EB;
+    margin-bottom:30px;
+
+}
+
+/* ==========================
+   RESULT CARD
+========================== */
+
+.result-card{
+
+    background:white;
+    padding:18px;
+    margin-bottom:18px;
+    border-radius:12px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+
+}
+
+.correct{
+
+    border-left:5px solid #22C55E;
+
+}
+
+.wrong{
+
+    border-left:5px solid #EF4444;
+
+}
+
+/* ==========================
+   QUESTION
+========================== */
+
+.question-number{
+
+    display:inline-block;
+    background:#D4AF37;
+    color:#0F172A;
+    padding:4px 12px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+    margin-bottom:10px;
+
+}
+
+.question{
+
+    font-size:18px;
+    margin-bottom:15px;
+    color:#0F172A;
+
+}
+
+/* ==========================
+   ANSWERS
+========================== */
+
+.answer-box{
+
+    background:#F8FAFC;
+    padding:12px;
+    border-radius:8px;
+    margin-bottom:10px;
+
+}
+
+.answer-box strong{
+
+    color:#0F172A;
+
+}
+
+.answer-box p{
+
+    margin:4px 0;
+    line-height:1.5;
+
+}
+
+/* ==========================
+   STATUS
+========================== */
+
+.status{
+
+    text-align:center;
+    padding:8px;
+    border-radius:8px;
+    font-weight:600;
+    margin-top:12px;
+
+}
+
+.correct-status{
+
+    background:#DCFCE7;
+    color:#15803D;
+
+}
+
+.wrong-status{
+
+    background:#FEE2E2;
+    color:#B91C1C;
+
+}
+
+/* ==========================
+   BUTTON
+========================== */
+
+.content>a{
+
+    display:block;
+    width:220px;
+    margin:35px auto;
+    text-align:center;
+    text-decoration:none;
+
+    background:#D4AF37;
+    color:#0F172A;
+
+    padding:12px;
+    border-radius:10px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.content>a:hover{
+
+    background:#B89020;
+    color:white;
+
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media(max-width:768px){
+
+.content{
+
+    padding:15px;
+
+}
+
+.content h1{
+
+    font-size:28px;
+
+}
+
+.persentshow{
+
+    font-size:38px;
+
+}
+
+.question{
+
+    font-size:16px;
+
+}
+
+.answer-box{
+
+    padding:10px;
+
+}
+
+.content>a{
+
+    width:100%;
+
+}
+
+}

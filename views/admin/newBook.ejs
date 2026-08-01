@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+
+<link rel="stylesheet" href="/css/admin.css">
+
+</head>
+
+<body>
+    
+
+<div class="admin-layout">
+
+<%- include("sidebar") %>
+
+<div class="admin-content">
+<div class="content">
+
+<h1>Add Book</h1>
+
+<form
+action="/admin/books"
+method="POST"
+enctype="multipart/form-data">
+
+<input
+type="text"
+name="title"
+placeholder="Book Title"
+required>
+
+<br><br>
+
+<input
+type="text"
+name="author"
+placeholder="Author">
+
+<br><br>
+
+<input
+type="text"
+name="category"
+placeholder="Category">
+
+<br><br>
+
+<textarea
+name="description"
+placeholder="Description"></textarea>
+
+<br><br>
+
+<label>Cover</label>
+
+<input
+type="file"
+name="cover"
+accept="image/*">
+
+<br><br>
+
+<label>PDF</label>
+
+<input
+type="file"
+name="pdf"
+accept=".pdf">
+
+<br><br>
+
+<label>
+
+<input
+type="checkbox"
+name="isPremium">
+
+Premium
+
+</label>
+
+<br><br>
+
+<button>
+
+Create Book
+
+</button>
+
+</form>
+
+</div>
+
+</body>
+
+</html>

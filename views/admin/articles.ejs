@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+<%- include("sidebar") %>
+
+<div class="admin-content">
+
+
+
+    <main class="content">
+
+        <h1>Articles</h1>
+
+        <a href="/admin/articles/new" class="btn">
+            + New Article
+        </a>
+
+        <table>
+
+            <tr>
+
+                <th>ID</th>
+
+                <th>Title</th>
+
+                <th>Category</th>
+
+                <th>Premium</th>
+
+                <th>Actions</th>
+
+            </tr>
+
+            <% articles.forEach(article=>{ %>
+
+            <tr>
+
+                <td><%= article.id %></td>
+
+                <td><%= article.title %></td>
+
+                <td><%= article.category %></td>
+
+                <td>
+
+                    <%= article.isPremium ? "Yes" : "No" %>
+
+                </td>
+
+                <td>
+
+                    <a href="/admin/articles/edit/<%= article.id %>">
+                        Edit
+                    </a>
+
+                    |
+
+                    <a href="/admin/articles/delete/<%= article.id %>">
+                        Delete
+                    </a>
+
+                </td>
+
+            </tr>
+
+            <% }) %>
+
+        </table>
+
+    </main>
+
+
+</div>
+
+</div>
+</body>
+
+</html>

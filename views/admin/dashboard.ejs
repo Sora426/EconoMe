@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+<link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+<%- include("sidebar") %>
+
+<div class="admin-content">
+
+<div class="container">
+
+<h1>⚙️ Admin Dashboard</h1>
+
+<div class="cards">
+
+<div class="card">
+<h2>👥 Users</h2>
+<p><%= stats.users %></p>
+</div>
+
+<div class="card">
+<h2>📄 Articles</h2>
+<p><%= stats.articles %></p>
+</div>
+
+<!-- <div class="card">
+<h2>📚 Books</h2>
+<p><%= stats.books %></p>
+</div> -->
+
+<div class="card">
+<h2>📂 Materials</h2>
+<p><%= stats.materials %></p>
+</div>
+
+<div class="card">
+<h2>📝 Quizzes</h2>
+<p><%= stats.quizzes %></p>
+</div>
+
+<div class="card">
+<h2>⭐ Premium Users</h2>
+<p><%= stats.premium %></p>
+</div>
+
+</div>
+
+<hr>
+
+<h2>Quick Actions</h2>
+
+<p>
+<a href="/admin/articles/new">➕ New Article</a>
+</p>
+
+<!-- <p>
+<a href="/admin/books/new">➕ New Book</a>
+</p> -->
+
+<p>
+<a href="/admin/materials/new">➕ New Material</a>
+</p>
+
+<p>
+<a href="/admin/quizzes/new">➕ New Quiz</a>
+</p>
+
+</div>
+</div>
+
+</div>
+</body>
+
+</html>

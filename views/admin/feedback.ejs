@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+
+<link rel="stylesheet" href="/css/admin.css">
+
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+<%- include("sidebar") %>
+
+<div class="admin-content">
+
+<h1>Feedback</h1>
+
+<h3>
+Average Rating:
+<%= Number(average.average || 0).toFixed(1) %> ⭐
+</h3>
+
+<h3>
+Total Reviews:
+<%= average.total || 0 %>
+</h3>
+
+<hr>
+
+<% if(feedbacks.length===0){ %>
+
+<p>No feedback yet.</p>
+
+<% } %>
+
+<% feedbacks.forEach(feedback=>{ %>
+
+<div style="border:1px solid #ccc;padding:20px;margin-bottom:20px;border-radius:10px;">
+
+<h3>
+
+<%= feedback.name %>
+
+</h3>
+
+<p>
+
+Rating:
+<%= "⭐".repeat(feedback.rating) %>
+
+</p>
+
+<p>
+
+<%= feedback.message %>
+
+</p>
+
+<small>
+
+<%= feedback.createdAt %>
+
+</small>
+
+<br><br>
+
+<form
+action="/admin/feedback/delete/<%= feedback.id %>"
+method="POST">
+
+<button>
+
+Delete
+
+</button>
+
+</form>
+
+</div>
+
+<% }) %>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

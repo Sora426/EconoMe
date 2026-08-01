@@ -1,0 +1,38 @@
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f5f7fb;
+}
+
+.admin-layout{
+    display:flex;
+    min-height:100vh;
+}
+
+.admin-sidebar{
+    width:250px;
+    background:#1565c0;
+    color:white;
+    padding:25px;
+}
+
+.admin-sidebar h2{
+    margin-bottom:35px;
+}
+
+.admin-sidebar a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:12px 0;
+    transition:.2s;
+}
+
+.admin-sidebar a:hover{
+    padding-left:10px;
+}
+
+.admin-content{
+    flex:1;
+    padding:40px;
+}

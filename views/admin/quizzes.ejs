@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+
+<link rel="stylesheet" href="/css/admin.css">
+
+</head>
+
+<body>
+    
+
+<div class="admin-layout">
+
+<%- include("sidebar") %>
+
+<div class="admin-content">
+<h1>Quizzes</h1>
+
+<a href="/admin/quizzes/new">
+    + New Quiz
+</a>
+
+<hr>
+
+<% quizzes.forEach(quiz => { %>
+
+<div>
+
+    <h2><%= quiz.title %></h2>
+
+    <p><%= quiz.category %></p>
+
+    <a href="/admin/quizzes/<%= quiz.id %>/questions">
+
+Manage Questions
+
+</a>
+|
+
+<a
+href="/admin/quizzes/delete/<%= quiz.id %>"
+onclick="return confirm('Delete this quiz?')">
+
+🗑 Delete
+
+</a>
+</div>
+
+<hr>
+
+<% }) %>
+</div>
+
+</div>
+
+    
+</body>

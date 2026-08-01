@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<%- include("../partials/head",{title:"Quizzes"}) %>
+
+<link rel="stylesheet" href="/css/quiz.css">
+
+</head>
+
+<body>
+
+<%- include("../partials/navbar") %>
+
+<div class="content">
+
+<h1>Economics Quizzes</h1>
+
+<% quizzes.forEach(quiz=>{ %>
+
+<div class="card">
+
+<h2><%= quiz.title %></h2>
+
+<p>
+
+<%= quiz.category %>
+
+</p>
+
+<a href="/quizzes/<%= quiz.id %>">
+
+Take Quiz
+
+</a>
+
+</div>
+
+<br>
+
+<% }) %>
+
+</div>
+
+</body>
+
+</html>

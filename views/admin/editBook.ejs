@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <%- include("../partials/head",{title:"Edit Book"}) %>
+
+    <link rel="stylesheet" href="/css/admin.css">
+
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+<%- include("sidebar") %>
+
+<div class="admin-content">
+
+<h1>Edit Book</h1>
+
+<form
+action="/admin/books/update/<%= book.id %>"
+method="POST"
+enctype="multipart/form-data">
+
+<label>Title</label>
+
+<input
+type="text"
+name="title"
+value="<%= book.title %>"
+required>
+
+<label>Author</label>
+
+<input
+type="text"
+name="author"
+value="<%= book.author %>">
+
+<label>Category</label>
+
+<input
+type="text"
+name="category"
+value="<%= book.category %>">
+
+<label>Description</label>
+
+<textarea
+name="description"
+rows="6"><%= book.description %></textarea>
+
+<label>Current Cover</label>
+
+<br>
+
+<% if(book.cover){ %>
+
+<img
+src="/uploads/covers/<%= book.cover %>"
+width="120">
+
+<% } %>
+
+<br><br>
+
+<label>New Cover (optional)</label>
+
+<input
+type="file"
+name="cover">
+
+<label>New PDF (optional)</label>
+
+<input
+type="file"
+name="pdf">
+
+<br><br>
+
+<label>
+
+<input
+type="checkbox"
+name="isPremium"
+<%= book.isPremium ? "checked" : "" %>>
+
+Premium Book
+
+</label>
+
+<br><br>
+
+<button type="submit">
+
+Save Changes
+
+</button>
+
+<a href="/admin/books">
+
+Cancel
+
+</a>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<%- include("../partials/head",{title:book.title}) %>
+
+<link rel="stylesheet" href="/css/bookReader.css">
+
+</head>
+
+<body>
+
+<%- include("../partials/navbar") %>
+
+<div class="reader-container">
+
+<h1><%= book.title %></h1>
+
+<div class="toolbar">
+
+<button id="prev">
+
+◀ Previous
+
+</button>
+
+<span>
+
+Page
+
+<span id="page-num"></span>
+
+/
+
+<span id="page-count"></span>
+
+</span>
+
+<button id="next">
+
+Next ▶
+
+</button>
+
+</div>
+
+<canvas id="pdf-render"></canvas>
+
+<div class="progress-wrapper">
+
+<div id="progress-bar"></div>
+
+</div>
+
+</div>
+
+<script>
+const pdfUrl = "/uploads/books/<%= book.pdf %>";
+const bookId = Number("<%= book.id %>");
+</script>
+
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js">
+</script>
+
+<script src="/js/pdfReader.js"></script>
+
+    
+</body>
+</html>

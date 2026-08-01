@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+
+<link rel="stylesheet" href="/css/admin.css">
+
+</head>
+
+<body>
+    
+
+<div class="admin-layout">
+
+<%- include("sidebar") %>
+
+<div class="admin-content">
+
+<div class="content">
+
+<h1>Add Material</h1>
+
+<form
+action="/admin/materials"
+method="POST"
+enctype="multipart/form-data">
+
+<input
+type="text"
+name="title"
+placeholder="Material Title"
+required>
+
+<br><br>
+
+<input
+type="text"
+name="examType"
+placeholder="Exam Type">
+
+<br><br>
+
+<textarea
+name="description"
+placeholder="Description"></textarea>
+
+<br><br>
+
+<input
+type="file"
+name="file">
+
+<br><br>
+
+<label>
+
+<input
+type="checkbox"
+name="isPremium">
+
+Premium
+
+</label>
+
+<br><br>
+
+<button>
+
+Upload Material
+
+</button>
+
+</form>
+
+</div>
+
+</body>
+
+</html>

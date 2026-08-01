@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    
+
+    <link rel="stylesheet" href="/css/admin.css">
+
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+    <%- include("sidebar") %>
+
+    <div class="admin-content">
+
+        <h1>Edit Material</h1>
+
+        <form
+            action="/admin/materials/update/<%= material.id %>"
+            method="POST"
+            enctype="multipart/form-data">
+
+            <label>Title</label>
+
+            <input
+                type="text"
+                name="title"
+                value="<%= material.title %>"
+                required>
+
+            <br><br>
+
+            <label>Exam Type</label>
+
+            <input
+                type="text"
+                name="examType"
+                value="<%= material.examType %>"
+                required>
+
+            <br><br>
+
+            <label>Description</label>
+
+            <textarea
+                name="description"
+                rows="6"
+                required><%= material.description %></textarea>
+
+            <br><br>
+
+            <label>Replace File (optional)</label>
+
+            <input
+                type="file"
+                name="file">
+
+            <br><br>
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    name="isPremium"
+                    <%= material.isPremium ? "checked" : "" %>>
+
+                Premium Material
+
+            </label>
+
+            <br><br>
+
+            <button type="submit">
+
+                Save Changes
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

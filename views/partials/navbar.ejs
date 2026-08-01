@@ -1,0 +1,121 @@
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <!-- Logo -->
+        <a href="/" class="logo">
+
+            ✦ EconoMe ✦
+
+        </a>
+
+        <!-- Navigation -->
+
+        <ul class="nav-links">
+
+            <li><a href="/">Home</a></li>
+
+            <li><a href="/articles">Articles</a></li>
+
+            <!-- <li><a href="/books">Books</a></li> -->
+
+            <li><a href="/materials">Materials</a></li>
+
+            <li><a href="/quizzes">Quizzes</a></li>
+
+            <li><a href="/premium">Premium</a></li>
+
+        </ul>
+
+        <!-- Search -->
+
+        <form class="search-form" action="/search" method="GET">
+
+            <input
+                type="text"
+                name="q"
+                placeholder="🔍 Search...">
+
+        </form>
+
+        <!-- Right Side -->
+
+        <div class="nav-right">
+
+            <div class="nav-right">
+
+<% if(user){ %>
+
+<div class="profile-menu">
+
+<button class="profile-btn">
+
+👤 <%= user.name %> ▼
+
+</button>
+
+<div class="profile-dropdown">
+
+<a href="/dashboard">
+
+📊 Dashboard
+
+</a>
+
+<a href="/favorites">
+
+❤️ Favorites
+
+</a>
+
+<a href="/premium">
+
+👑 Premium
+
+</a>
+
+<% if(user.role==="admin"){ %>
+
+<a href="/admin">
+
+⚙ Admin Panel
+
+</a>
+
+<% } %>
+
+<hr>
+
+<a href="/logout">
+
+🚪 Logout
+
+</a>
+
+</div>
+
+</div>
+
+<% } else { %>
+
+<a href="/login" class="nav-btn">
+
+Login
+
+</a>
+
+<a href="/register" class="btn-primary">
+
+Register
+
+</a>
+
+<% } %>
+
+</div>
+
+        </div>
+
+    </div>
+
+</nav>

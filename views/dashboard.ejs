@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<%- include("partials/head",{title:"Dashboard"}) %>
+
+<link rel="stylesheet" href="/css/home.css">
+
+</head>
+
+<body>
+
+<%- include("partials/navbar") %>
+
+<div class="container">
+
+<h1>
+
+Welcome back, <%= user.name %> 👋
+
+</h1>
+
+<div class="grid">
+
+<div class="card">
+
+<h2>👑 Premium</h2>
+
+<p>
+
+<%= user.isPremium ? "Active" : "Free Plan" %>
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>❤️ Favorites</h2>
+
+<p>
+
+<%= favoriteCount.total %>
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>📚 Books</h2>
+
+<p>
+
+<%= books.total %>
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>📄 Articles</h2>
+
+<p>
+
+<%= articles.total %>
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>📑 Materials</h2>
+
+<p>
+
+<%= materials.total %>
+
+</p>
+
+</div>
+<div class="card">
+
+<h2>📝 Quiz Progress</h2>
+
+<p>
+
+Completed:
+<%= completedQuizzes.total %>
+
+</p>
+
+<p>
+
+Average Score:
+<%= averageScore.average || 0 %>%
+
+</p>
+
+<a href="/quizzes/progress">
+
+View Details →
+
+</a>
+
+
+</div>
+</div>
+
+<hr>
+
+<h2>Quick Actions</h2>
+
+<p>
+
+<a href="/books">📚 Browse Books</a>
+
+</p>
+
+<p>
+
+<a href="/articles">📄 Read Articles</a>
+
+</p>
+
+<p>
+
+<a href="/materials">📑 Study Materials</a>
+
+</p>
+
+<p>
+
+<a href="/favorites">❤️ My Favorites</a>
+
+</p>
+
+</div>
+
+</body>
+
+</html>

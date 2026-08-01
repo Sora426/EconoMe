@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <div class="admin-layout">
+
+<%- include("sidebar") %>
+
+<div class="admin-content">
+<h1>Books</h1>
+
+<a href="/admin/books/new">
+
++ Add Book
+
+</a>
+
+<hr>
+
+<% books.forEach(book=>{ %>
+
+<div>
+
+<h2><%= book.title %></h2>
+
+<p><%= book.author %></p>
+
+<p><%= book.category %></p>
+
+<a href="/admin/books/edit/<%= book.id %>">
+
+✏ Edit
+
+</a>
+
+|
+
+<a
+href="/admin/books/delete/<%= book.id %>"
+onclick="return confirm('Delete this book?')">
+
+🗑 Delete
+
+</a>
+
+</div>
+
+<hr>
+
+<% }) %>
+</div>
+
+</div>
+</body>
+</html>

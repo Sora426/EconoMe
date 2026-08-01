@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <%- include("../partials/head", { title: "Books" }) %>
+   <link rel="stylesheet" href="/css/book.css">
+</head>
+
+<body>
+
+    <%- include("../partials/navbar") %>
+
+    <div class="container">
+
+        <h1 class="page-title">📚 Books</h1>
+
+        <div class="cards">
+
+            <% if(books.length === 0){ %>
+
+                <p>No books available.</p>
+
+            <% } %>
+
+            <% books.forEach(book => { %>
+
+                <div class="card book-card">
+
+    <div class="cover-wrapper">
+
+        <% if(book.cover){ %>
+
+            <img
+                src="/uploads/covers/<%= book.cover %>"
+                alt="<%= book.title %>"
+                class="book-cover">
+
+        <% } else { %>
+
+            <img
+                src="/images/no-cover.png"
+                alt="No Cover"
+                class="book-cover">
+
+        <% } %>
+
+        
+
+    </div>
+
+    <div class="book-info">
+
+        <h2><%= book.title %></h2>
+
+        <p class="author">
+
+            ✍ <%= book.author || "Unknown Author" %>
+
+        </p>
+
+        <p class="category">
+
+            📚 <%= book.category || "General" %>
+
+        </p>
+
+       <p class="description">
+
+    <%= book.description || "No description available." %>
+
+</p>
+
+        <div class="book-buttons">
+
+    <% if(book.isPremium && (!user || !user.isPremium)){ %>
+
+        <a href="/premium" class="btn-primaryy">
+
+            🔒 Premium
+
+        </a>
+
+    <% } else { %>
+
+        <a
+            href="/uploads/books/<%= book.pdf %>"
+            target="_blank"
+            class="btn-primaryy">
+
+            📖 Read PDF
+
+        </a>
+
+    <% } %>
+
+    <% if(user){ %>
+
+        <% if(user){ %>
+
+    <% if(favoriteIds.includes(book.id)){ %>
+
+        <form action="/favorites/remove" method="POST">
+
+            <input type="hidden" name="type" value="book">
+
+            <input type="hidden" name="itemId" value="<%= book.id %>">
+
+            <button class="btn-secondaryy">
+
+                💔 Remove
+
+            </button>
+
+        </form>
+
+    <% }else{ %>
+
+        <form action="/favorites/add" method="POST">
+
+            <input type="hidden" name="type" value="book">
+
+            <input type="hidden" name="itemId" value="<%= book.id %>">
+
+            <button class="btn-secondaryy">
+
+                ❤️ Favorite
+
+            </button>
+
+        </form>
+
+    <% } %>
+
+<% } %>
+
+    <% } %>
+
+</div>
+
+    </div>
+
+</div>
+
+            <% }) %>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

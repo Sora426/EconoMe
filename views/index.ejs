@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<%- include("partials/head", { title: "EconoMe" }) %>
+
+</head>
+
+<body>
+
+<%- include("partials/navbar") %>
+
+<!-- Hero Section -->
+<section class="hero">
+
+    <div class="hero-image">
+        <img src="/images/Adobe Express - file.png" alt="Joan Robinson">
+    </div>
+
+    <div class="hero-content">
+        <h1>
+            “The purpose of studying economics is not to acquire a set of ready-made answers to economic questions, but to learn how to avoid being deceived by economists.”
+        </h1>
+
+        <p>― Joan Robinson</p>
+
+        <div class="hero-buttons">
+            <a href="/articles" class="btn-primary">Explore Ariticles</Article></a>
+            <a href="/quizzes" class="btn-secondary">Quizzes</a>
+        </div>
+    </div>
+
+</section>
+
+
+
+<section class="featured">
+
+<h2>Latest Articles</h2>
+
+<div class="card-grid">
+
+<% articles.forEach(article=>{ %>
+
+<div class="card">
+
+<h3><%= article.title %></h3>
+
+<p><%= article.description %></p>
+
+<a href="/articles/<%= article.id %>">
+
+Read →
+
+</a>
+
+</div>
+
+<% }) %>
+
+</div>
+
+</section>
+<!-- <section class="featured">
+
+<h2>Latest Books</h2>
+
+<div class="card-grid">
+
+<% books.forEach(book=>{ %>
+
+<div class="card">
+
+<img
+src="/uploads/covers/<%= book.cover %>"
+class="book-cover">
+
+<h3><%= book.title %></h3>
+
+<a href="/uploads/books/<%= book.pdf %>">
+
+Read
+
+</a>
+
+</div>
+
+<% }) %>
+
+</div>
+
+</section> -->
+
+<section class="featured">
+
+<h2>Latest Quizzes</h2>
+
+<div class="card-grid">
+
+<% quizzes.forEach(quiz=>{ %>
+
+<div class="card">
+
+<h3><%= quiz.title %></h3>
+
+<p><%= quiz.category %></p>
+
+<a href="/quizzes/<%= quiz.id %>">
+
+Start Quiz
+
+</a>
+
+</div>
+
+<% }) %>
+
+</div>
+
+</section>
+<section class="featured">
+
+<h2>Latest Materials</h2>
+
+<div class="card-grid">
+
+<% materials.forEach(material=>{ %>
+
+<div class="card">
+
+<h3><%= material.title %></h3>
+
+<p><%= material.examType %></p>
+
+<a href="/materials">
+
+More →
+
+</a>
+
+</div>
+
+<% }) %>
+
+</div>
+
+</section>
+<section class="stats">
+
+<h2>EconoMe Statistics</h2>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<h1><%= articleCount %></h1>
+
+<p>Articles</p>
+
+</div>
+
+<!-- <div class="stat-card">
+
+<h1><%= bookCount %></h1>
+
+<p>Books</p>
+
+</div> -->
+
+<div class="stat-card">
+
+<h1><%= materialCount %></h1>
+
+<p>Materials</p>
+
+</div>
+
+<div class="stat-card">
+
+<h1><%= quizCount %></h1>
+
+<p>Quizzes</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- why this platform  -->
+<section class="why">
+
+<h2>Why Choose EconoMe?</h2>
+
+<div class="why-grid">
+
+<!-- <div class="why-card">
+
+ <div class="icon">📚</div> 
+
+<h3>Extensive Library</h3>
+
+<p>
+Access hundreds of economics books and study resources.
+</p>
+
+</div> -->
+
+<div class="why-card">
+
+<div class="icon">🧠</div>
+
+<h3>Interactive Quizzes</h3>
+
+<p>
+Practice your knowledge with quizzes and track your progress.
+</p>
+
+</div>
+
+<div class="why-card">
+
+<div class="icon">⭐</div>
+
+<h3>Premium Content</h3>
+
+<p>
+Unlock exclusive books, articles and study materials.
+</p>
+
+</div>
+
+<div class="why-card">
+
+<div class="icon">📈</div>
+
+<h3>Learn Faster</h3>
+
+<p>
+Everything is organized to help students learn efficiently.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="feedback-section">
+
+<h2>Enjoying EconoMe?</h2>
+
+<p>
+
+Help us improve by rating the platform and sharing your feedback.
+
+</p>
+
+<div class="feedback-buttons">
+
+<a href="/feedback" class="btn-primary">
+
+💬 Send Feedback
+
+</a>
+
+<a href="/feedback" class="btn-secondary">
+
+⭐ Rate Our Platform 
+
+</a>
+
+</div>
+
+</section>
+</body>
+
+</html>

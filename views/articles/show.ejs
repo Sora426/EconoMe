@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<%- include("../partials/head",{title:article.title}) %>
+
+<link rel="stylesheet" href="/css/articleshow.css">
+
+</head>
+
+<body>
+
+<%- include("../partials/navbar") %>
+
+<div class="article-page">
+
+<% if(article.image){ %>
+
+<img
+class="cover"
+src="/uploads/images/<%= article.image %>"
+>
+<% if(user){ %>
+
+    <% if(isFavorite){ %>
+
+        <form action="/favorites/remove" method="POST">
+
+            <input type="hidden" name="type" value="article">
+
+            <input type="hidden" name="itemId" value="<%= article.id %>">
+
+            <button type="submit">
+
+                💔 Remove 
+
+            </button>
+
+        </form>
+
+    <% }else{ %>
+
+        <form action="/favorites/add" method="POST">
+
+            <input type="hidden" name="type" value="article">
+
+            <input type="hidden" name="itemId" value="<%= article.id %>">
+
+            <button type="submit">
+
+                ❤️ Favorite
+
+            </button>
+
+        </form>
+
+    <% } %>
+
+<% } %>
+<% } %>
+
+<h1>
+
+<%= article.title %>
+
+</h1>
+
+<p class="preview">
+
+    <%- article.preview %>
+
+</p>
+
+<% if(article.isPremium && (!user || !user.isPremium)){ %>
+
+<div class="article-preview">
+
+    <div class="preview-content">
+
+        <%- article.content %>
+
+    </div>
+
+    <div class="blur-overlay"></div>
+
+    <div class="premium-box">
+
+        <h2>🔒 Continue Reading</h2>
+
+        <p>
+
+            Upgrade to Premium to unlock the full article.
+
+        </p>
+
+        <a href="/premium" class="btn">
+
+            Upgrade Now
+
+        </a>
+
+    </div>
+
+</div>
+
+<% } else { %>
+
+<div class="article-content">
+
+    <%- article.content %>
+
+</div>
+
+<% } %>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+
+<link rel="stylesheet" href="/css/admin.css">
+
+</head>
+
+<body>
+    
+
+<div class="admin-layout">
+
+<%- include("sidebar") %>
+
+<div class="admin-content">
+
+<div class="content">
+
+<h1>
+
+<%= quiz.title %>
+
+</h1>
+
+<p>
+
+Category:
+
+<%= quiz.category %>
+
+</p>
+
+<hr>
+
+<a href="/admin/quizzes/<%= quiz.id %>/questions/new">
+
+➕ Add Question
+
+</a>
+
+<br><br>
+
+<% if(questions.length===0){ %>
+
+<p>
+
+No questions yet.
+
+</p>
+
+<% } %>
+
+<% questions.forEach((q,index)=>{ %>
+
+<div>
+
+<h3>
+
+Question <%= index+1 %>
+
+</h3>
+
+<p>
+
+<%= q.question %>
+
+</p>
+
+<a href="/admin/questions/edit/<%= q.id %>">
+
+Edit
+
+</a>
+
+|
+
+<a href="/admin/questions/delete/<%= q.id %>">
+
+Delete
+
+</a>
+
+</div>
+
+<hr>
+
+<% }) %>
+
+<a href="/admin/quizzes">
+
+← Back to Quizzes
+
+</a>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,447 @@
+/* ==========================================
+   HERO
+========================================== */
+
+.hero{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:60px;
+
+    max-width:1400px;
+    margin:20px auto;
+    padding:40px 20px;
+}
+
+.hero-image{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    
+}
+
+.hero-image img{
+   border-radius: 20px;
+    width:100%;
+    max-width:420px;
+    height:auto;
+    display:block;
+    object-fit:contain;
+}
+
+.hero-content{
+    flex:1;
+}
+
+.hero-content h1{
+    font-size:2.2rem;
+    line-height:1.4;
+    margin-bottom:20px;
+}
+
+.hero-content p{
+    font-size:1.2rem;
+    color:#666;
+    margin-bottom:30px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+/* ==========================================
+SECTION
+========================================== */
+
+.featured{
+
+padding:90px 8%;
+
+}
+
+.featured h2{
+
+text-align:center;
+
+font-size:42px;
+
+color:#0F172A;
+
+margin-bottom:50px;
+
+position:relative;
+
+}
+
+.featured h2::after{
+
+content:"";
+
+display:block;
+
+width:90px;
+
+height:4px;
+
+background:#D4AF37;
+
+margin:15px auto;
+
+border-radius:20px;
+
+}
+
+/* ==========================================
+CARDS
+========================================== */
+
+.card-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(280px,1fr));
+
+gap:35px;
+
+}
+
+.card{
+
+background:white;
+
+border-radius:18px;
+
+overflow:hidden;
+
+padding:22px;
+
+transition:.35s;
+
+box-shadow:
+0 10px 30px rgba(0,0,0,.08);
+
+border-top:5px solid #D4AF37;
+
+}
+
+.card:hover{
+
+transform:translateY(-10px);
+
+box-shadow:
+0 25px 40px rgba(0,0,0,.15);
+
+}
+
+.card h3{
+
+margin:18px 0;
+
+color:#0F172A;
+
+font-size:24px;
+
+}
+
+.card p{
+
+color:#555;
+
+margin-bottom:20px;
+
+}
+
+.card a{
+
+color:#D4AF37;
+
+font-weight:700;
+
+transition:.3s;
+
+}
+
+.card a:hover{
+
+padding-left:8px;
+
+}
+
+/* ==========================================
+BOOK COVERS
+========================================== */
+
+.book-cover{
+
+width:100%;
+
+height:330px;
+
+object-fit:cover;
+
+border-radius:12px;
+
+}
+
+/* ==========================================
+STATISTICS
+========================================== */
+
+.stats{
+
+background:#0F172A;
+
+padding:90px 8%;
+
+}
+
+.stats h2{
+
+color:#D4AF37;
+
+text-align:center;
+
+font-size:42px;
+
+margin-bottom:45px;
+
+}
+
+.stats-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+
+gap:30px;
+
+}
+
+.stat-card{
+
+background:#172235;
+
+padding:35px;
+
+border-radius:18px;
+
+text-align:center;
+
+border:2px solid #D4AF37;
+
+transition:.3s;
+
+}
+
+.stat-card:hover{
+
+transform:translateY(-8px);
+
+}
+
+.stat-card h1{
+
+font-size:58px;
+
+color:#D4AF37;
+
+margin-bottom:10px;
+
+}
+
+.stat-card p{
+
+color:white;
+
+font-size:18px;
+
+}
+
+/* ==========================================
+WHY
+========================================== */
+
+.why{
+
+padding:90px 8%;
+
+background:#F8F5F0;
+
+}
+
+.why h2{
+
+text-align:center;
+
+font-size:42px;
+
+margin-bottom:55px;
+
+}
+
+.why-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(260px,1fr));
+
+gap:35px;
+
+}
+
+.why-card{
+
+background:white;
+
+padding:35px;
+
+border-radius:18px;
+
+text-align:center;
+
+transition:.3s;
+
+border-bottom:5px solid #D4AF37;
+
+}
+
+.why-card:hover{
+
+transform:translateY(-10px);
+
+}
+
+.icon{
+
+font-size:55px;
+
+margin-bottom:18px;
+
+}
+
+.why-card h3{
+
+margin-bottom:15px;
+
+color:#0F172A;
+
+}
+
+/* ==========================================
+FEEDBACK
+========================================== */
+
+.feedback-section{
+
+background:
+linear-gradient(
+135deg,
+#0F172A,
+#1E293B
+);
+
+padding:100px 20px;
+
+text-align:center;
+
+color:white;
+
+}
+
+.feedback-section h2{
+
+color:#D4AF37;
+
+font-size:42px;
+
+margin-bottom:20px;
+
+}
+
+.feedback-section p{
+
+max-width:650px;
+
+margin:auto;
+
+margin-bottom:35px;
+
+color:#E5E7EB;
+
+font-size:18px;
+
+}
+
+.feedback-buttons{
+
+display:flex;
+
+justify-content:center;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+}
+
+/* ==========================================
+RESPONSIVE
+========================================== */
+
+@media(max-width:900px){
+
+.hero h1{
+
+font-size:46px;
+
+}
+
+.hero p{
+
+font-size:18px;
+
+}
+
+.featured h2,
+.stats h2,
+.why h2,
+.feedback-section h2{
+
+font-size:34px;
+
+}
+
+}
+
+@media(max-width:600px){
+
+.hero{
+
+padding:90px 20px;
+
+}
+
+.hero h1{
+
+font-size:38px;
+
+}
+
+.hero-buttons{
+
+flex-direction:column;
+
+}
+
+.feedback-buttons{
+
+flex-direction:column;
+
+}
+
+}

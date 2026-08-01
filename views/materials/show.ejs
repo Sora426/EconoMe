@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <%- include("../partials/head", { title: material.title }) %>
+
+    <link rel="stylesheet" href="/css/materialshow.css">
+
+</head>
+
+<body>
+
+<%- include("../partials/navbar") %>
+
+<div class="material-container">
+
+    <h1><%= material.title %></h1>
+
+    <div class="material-info">
+
+        <p class="description">
+
+            <%= material.description %>
+
+        </p>
+
+        <% if(material.isPremium && (!user || !user.isPremium)){ %>
+
+            <div class="premium-book">
+
+                <h2>🔒 Premium Material</h2>
+
+                <p>This file is available only for Premium members.</p>
+
+                <a href="/premium" class="btn">
+
+                    Upgrade Now
+
+                </a>
+
+            </div>
+
+        <% } else { %>
+
+            <div class="download">
+
+                <a
+                    href="/uploads/materials/<%= material.file %>"
+                    target="_blank"
+                    class="btn">
+
+                    📄 Download
+
+                </a>
+
+            </div>
+
+        <% } %>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

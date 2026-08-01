@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+
+<link rel="stylesheet" href="/css/admin.css">
+
+</head>
+
+<body>
+    
+
+<div class="admin-layout">
+
+<%- include("sidebar") %>
+
+<div class="admin-content">
+<div class="content">
+
+<h1>Edit Question</h1>
+
+<form
+action="/admin/questions/update/<%= question.id %>"
+method="POST">
+
+<textarea
+name="question"><%= question.question %></textarea>
+
+<br><br>
+
+<input
+name="optionA"
+value="<%= question.optionA %>">
+
+<br><br>
+
+<input
+name="optionB"
+value="<%= question.optionB %>">
+
+<br><br>
+
+<input
+name="optionC"
+value="<%= question.optionC %>">
+
+<br><br>
+
+<input
+name="optionD"
+value="<%= question.optionD %>">
+
+<br><br>
+
+<select
+name="correctAnswer">
+
+<option value="A" <%= question.correctAnswer==="A"?"selected":"" %>>A</option>
+
+<option value="B" <%= question.correctAnswer==="B"?"selected":"" %>>B</option>
+
+<option value="C" <%= question.correctAnswer==="C"?"selected":"" %>>C</option>
+
+<option value="D" <%= question.correctAnswer==="D"?"selected":"" %>>D</option>
+
+</select>
+
+<br><br>
+
+<button>
+
+Update Question
+
+</button>
+
+</form>
+
+</div>
+
+</body>
+
+</html>

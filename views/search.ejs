@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <%- include("partials/head",{title:"Search"}) %>
+
+    <link rel="stylesheet" href="/css/search.css">
+
+</head>
+
+<body>
+
+<%- include("partials/navbar",{user:user}) %>
+
+<div class="search-container">
+
+    <h1>🔍 Search Results</h1>
+
+    <p class="keyword">
+
+        Results for:
+
+        <strong>"<%= keyword %>"</strong>
+
+    </p>
+
+    <!-- ===================== ARTICLES ===================== -->
+
+    <h2>📰 Articles (<%= articles.length %>)</h2>
+
+    <% if(articles.length===0){ %>
+
+        <p class="no-results">No articles found.</p>
+
+    <% } %>
+
+    <% articles.forEach(article=>{ %>
+
+    <div class="search-card">
+
+        <div class="search-info">
+
+            <h3>
+
+                <%= article.title %>
+
+            </h3>
+
+            <p>
+
+                <%= article.category %>
+
+            </p>
+
+        </div>
+
+        <a
+        href="/articles/<%= article.id %>"
+        class="btn-primary">
+
+            Read
+
+        </a>
+
+    </div>
+
+    <% }) %>
+
+    <!-- ===================== BOOKS ===================== -->
+
+    <!-- <h2>📚 Books (<%= books.length %>)</h2>
+
+    <% if(books.length===0){ %>
+
+        <p class="no-results">No books found.</p>
+
+    <% } %> -->
+
+    <!-- <% books.forEach(book=>{ %>
+
+    <div class="search-card">
+
+        <div class="cover">
+
+            <% if(book.cover){ %>
+
+                <img
+                src="/uploads/covers/<%= book.cover %>">
+
+            <% }else{ %>
+
+                <img
+                src="/images/no-cover.png">
+
+            <% } %>
+
+        </div>
+
+        <div class="search-info">
+
+            <h3>
+
+                <%= book.title %>
+
+            </h3>
+
+            <p>
+
+                <%= book.author %>
+
+            </p>
+
+            <small>
+
+                <%= book.category %>
+
+            </small>
+
+        </div>
+
+        <% if(book.isPremium && (!user || !user.isPremium)){ %>
+
+            <a
+            href="/premium"
+            class="btn-premium">
+
+                👑 Premium
+
+            </a>
+
+        <% }else{ %>
+
+            <a
+            href="/books/read/<%= book.id %>"
+            class="btn-primary">
+
+                📖 Read
+
+            </a>
+
+        <% } %>
+
+    </div>
+
+    <% }) %> -->
+
+    <!-- ===================== MATERIALS ===================== -->
+
+    <h2>📄 Materials (<%= materials.length %>)</h2>
+
+    <% if(materials.length===0){ %>
+
+        <p class="no-results">
+
+            No materials found.
+
+        </p>
+
+    <% } %>
+
+    <% materials.forEach(material=>{ %>
+
+    <div class="search-card">
+
+        <div class="search-info">
+
+            <h3>
+
+                <%= material.title %>
+
+            </h3>
+
+            <p>
+
+                <%= material.examType %>
+
+            </p>
+
+        </div>
+
+        <% if(material.isPremium && (!user || !user.isPremium)){ %>
+
+            <a
+            href="/premium"
+            class="btn-premium">
+
+                👑 Premium
+
+            </a>
+
+        <% }else{ %>
+
+            <a
+            href="/uploads/materials/<%= material.file %>"
+            target="_blank"
+            class="btn-primary">
+
+                📄 Download
+
+            </a>
+
+        <% } %>
+
+    </div>
+
+    <% }) %>
+    <h2>🧠 Quizzes (<%= quizzes.length %>)</h2>
+
+    <% if(quizzes.length===0){ %>
+
+        <p class="no-results">
+
+            No quiz found.
+
+        </p>
+
+    <% } %>
+    <% quizzes.forEach(quiz=>{ %>
+    <div class="search-card">
+        <div class="search-info">
+            <h3>
+                <%= quiz.title %>
+            </h3>
+            <p>
+
+<%= quiz.category %>
+
+</p>
+             <a
+            href="/quizzes/<%= quiz.id %>"
+            
+            class="btn-primary">
+
+                Take Quiz
+
+            </a>
+            
+        </div>
+        
+    </div>
+   <% }) %>
+   
+   
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,200 @@
+const db = require("../config/database");
+
+// USERS
+db.serialize(() => {
+db.run(`
+CREATE TABLE IF NOT EXISTS users(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+name TEXT NOT NULL,
+email TEXT UNIQUE NOT NULL,
+password TEXT NOT NULL,
+role TEXT DEFAULT 'user',
+isPremium INTEGER DEFAULT 0,
+premiumUntil DATETIME,
+createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+)
+`);
+
+// ARTICLES
+db.run(`
+CREATE TABLE IF NOT EXISTS articles(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+title TEXT NOT NULL,
+category TEXT,
+description TEXT,
+preview TEXT,
+content TEXT,
+image TEXT,
+isPremium INTEGER DEFAULT 0,
+createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+)
+`);
+
+// BOOKS
+db.run(`
+CREATE TABLE IF NOT EXISTS books(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+title TEXT NOT NULL,
+
+author TEXT,
+
+description TEXT,
+
+cover TEXT,
+
+pdf TEXT,
+
+category TEXT,
+
+isPremium INTEGER DEFAULT 0,
+
+createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+
+)
+`);
+
+
+// MATERIALS
+db.run(`
+CREATE TABLE IF NOT EXISTS materials(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+title TEXT ,
+description TEXT,
+file TEXT,
+examType TEXT,
+isPremium INTEGER DEFAULT 0
+)
+`);
+
+// QUIZZES
+db.run(`
+CREATE TABLE IF NOT EXISTS quizzes(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+title TEXT,
+category TEXT
+)
+`);
+
+// QUESTIONS
+db.run(`
+CREATE TABLE IF NOT EXISTS questions(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+quizId INTEGER,
+
+question TEXT,
+optionA TEXT,
+optionB TEXT,
+optionC TEXT,
+optionD TEXT,
+correctAnswer TEXT,
+FOREIGN KEY(quizId) REFERENCES quizzes(id)
+)
+`);
+
+db.run(`
+CREATE TABLE IF NOT EXISTS quiz_results(
+
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+userId INTEGER NOT NULL,
+
+quizId INTEGER NOT NULL,
+
+score INTEGER,
+
+total INTEGER,
+
+createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+FOREIGN KEY(userId) REFERENCES users(id),
+
+FOREIGN KEY(quizId) REFERENCES quizzes(id)
+
+)
+`);
+db.run(`
+CREATE TABLE IF NOT EXISTS favorites(
+
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+userId INTEGER NOT NULL,
+
+type TEXT NOT NULL,
+
+itemId INTEGER NOT NULL,
+
+createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+FOREIGN KEY(userId) REFERENCES users(id)
+
+)
+`);
+db.run(`
+CREATE TABLE IF NOT EXISTS book_progress(
+
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+userId INTEGER NOT NULL,
+
+bookId INTEGER NOT NULL,
+
+progress INTEGER DEFAULT 0,
+
+updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+UNIQUE(userId,bookId),
+
+FOREIGN KEY(userId) REFERENCES users(id),
+
+FOREIGN KEY(bookId) REFERENCES books(id)
+
+)
+`);
+
+db.run(`UPDATE users
+SET role = 'admin'
+WHERE email = 'ruhsora0407@gmail.com';`);
+
+
+
+
+db.run(`
+CREATE TABLE IF NOT EXISTS feedback(
+
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+userId INTEGER NOT NULL,
+
+rating INTEGER NOT NULL,
+
+message TEXT,
+
+createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+FOREIGN KEY(userId) REFERENCES users(id)
+
+)
+`);
+db.run(`
+CREATE TABLE IF NOT EXISTS quiz_results(
+
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+userId INTEGER NOT NULL,
+
+quizId INTEGER NOT NULL,
+
+score INTEGER NOT NULL,
+
+total INTEGER NOT NULL,
+
+createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+FOREIGN KEY(userId) REFERENCES users(id),
+
+FOREIGN KEY(quizId) REFERENCES quizzes(id)
+
+)
+`);
+});

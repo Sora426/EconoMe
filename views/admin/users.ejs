@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+
+<link rel="stylesheet" href="/css/admin.css">
+
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+<%- include("sidebar") %>
+
+<div class="admin-content">
+
+<h1>Users</h1>
+
+<table border="1" cellpadding="10">
+
+<tr>
+
+<th>Name</th>
+
+<th>Email</th>
+
+<th>Role</th>
+
+<th>Premium</th>
+<th>Expires</th>
+<th>Joined</th>
+<th>Actions</th>
+
+</tr>
+
+<% users.forEach(user=>{ %>
+
+<tr>
+
+<td><%= user.name %></td>
+
+<td><%= user.email %></td>
+
+<td><%= user.role %></td>
+
+<td>
+
+<%= user.isPremium ? "Yes" : "No" %>
+
+</td>
+<td>
+
+<% if(user.isPremium && user.premiumUntil){ %>
+
+    <%= new Date(user.premiumUntil).toLocaleDateString() %>
+
+<% } else { %>
+
+    —
+
+<% } %>
+
+</td>
+
+<td><%= user.createdAt %></td>
+<td>
+
+<!-- Premium -->
+
+<% if(user.isPremium){ %>
+<a href="/admin/users/remove-premium/<%= user.id %>">
+    Remove Premium
+</a>
+<% } else { %>
+<a href="/admin/users/make-premium/<%= user.id %>">
+    Make Premium
+</a>
+<% } %>
+
+|
+
+<!-- Role -->
+
+<% if(user.role === "admin"){ %>
+<a href="/admin/users/make-user/<%= user.id %>"
+   onclick="return confirm('Remove admin privileges?')">
+    Make User
+</a>
+<% } else { %>
+<a href="/admin/users/make-admin/<%= user.id %>"
+   onclick="return confirm('Make this user an admin?')">
+    Make Admin
+</a>
+<% } %>
+
+|
+
+<!-- Delete -->
+
+<a href="/admin/users/delete/<%= user.id %>"
+   onclick="return confirm('Delete this user?')">
+    Delete
+</a>
+
+</td>
+</tr>
+
+<% }) %>
+
+</table>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

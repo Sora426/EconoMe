@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <%- include("../partials/head", { title: "Materials" }) %>
+
+    <link rel="stylesheet" href="/css/material.css">
+
+</head>
+
+<body>
+
+<%- include("../partials/navbar") %>
+
+<div class="mcontainer">
+
+    <h1>📚 Study Materials</h1>
+
+    <% materials.forEach(material => { %>
+
+<div class="material-card">
+
+    <div class="material-left">
+
+        <h2><%= material.title %></h2>
+
+        <p class="exam-type">
+
+            <strong><%= material.examType %></strong>
+
+        </p>
+
+        <p class="description">
+
+            <%= material.description %>
+
+        </p>
+
+    </div>
+
+    <div class="material-right">
+
+        <% if(material.isPremium && (!user || !user.isPremium)){ %>
+
+            <a href="/premium" class="btn">
+
+                🔒 Premium
+
+            </a>
+
+        <% } else { %>
+
+            <a
+                href="/uploads/materials/<%= material.file %>"
+                target="_blank"
+                class="btn">
+
+                📄 Read
+
+            </a>
+
+        <% } %>
+
+    </div>
+
+</div>
+
+<% }) %>
+
+</div>
+
+</body>
+
+</html>

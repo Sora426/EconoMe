@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<%- include("../partials/head",{title:"Articles"}) %>
+
+<link rel="stylesheet" href="/css/article.css">
+
+</head>
+
+<body>
+
+<%- include("../partials/navbar") %>
+
+<h1>Articles</h1>
+
+<div class="articles">
+
+<% articles.forEach(article=>{ %>
+
+<div class="article-card">
+
+<% if(article.image){ %>
+
+<img src="/uploads/images/<%= article.image %>">
+
+<% } %>
+
+<h2>
+
+<%= article.title %>
+
+</h2>
+
+<p>
+
+<%- article.description %>
+
+</p>
+
+<a href="/articles/<%= article.id %>">
+
+Read More
+
+</a>
+
+</div>
+
+<% }) %>
+
+</div>
+
+</body>
+
+</html>
