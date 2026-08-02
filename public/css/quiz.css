@@ -87,9 +87,18 @@ h1 {
     }
 
     .card a{
-        width:100%;
-        text-align:center;
-    }
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    min-width:100px;
+    min-height:38px;
+
+    padding:8px 18px;
+
+}
 
 }
 @media(max-width:480px){
@@ -109,6 +118,19 @@ h1{
 .card p{
 
     font-size:14px;
+
+}
+.card a{
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    min-width:100px;
+    min-height:38px;
+
+    padding:8px 18px;
 
 }
 
