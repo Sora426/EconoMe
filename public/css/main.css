@@ -99,7 +99,7 @@ button{
 
     width:90%;
 
-    max-width:1300px;
+    max-width:1100px;
 
     margin:auto;
 
@@ -699,5 +699,45 @@ height:1px;
 background:#E5E7EB;
 
 margin:6px 0;
+
+}
+@media (max-width:768px){
+
+    h1{
+        font-size:32px;
+    }
+
+    p{
+        font-size:16px;
+    }
+
+}
+@media(max-width:768px){
+
+.btn{
+
+width:100%;
+
+padding:14px;
+
+}
+
+}
+@media(max-width:768px){
+
+h1{
+
+font-size:34px;
+
+}
+
+}
+@media(max-width:768px){
+
+*{
+
+padding: 20px;
+
+}
 
 }
