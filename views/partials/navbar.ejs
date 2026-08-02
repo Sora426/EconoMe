@@ -1,3 +1,4 @@
+
 <nav class="navbar">
 
     <div class="nav-container">
@@ -8,10 +9,15 @@
             ✦ EconoMe ✦
 
         </a>
+        <button class="menu-toggle" id="menuToggle">
+
+☰
+
+</button>
 
         <!-- Navigation -->
 
-        <ul class="nav-links">
+        <ul class="nav-links" id="navLinks">
 
             <li><a href="/">Home</a></li>
 
@@ -40,7 +46,7 @@
 
         <!-- Right Side -->
 
-        <div class="nav-right">
+        
 
             <div class="nav-right">
 
@@ -114,8 +120,19 @@ Register
 
 </div>
 
-        </div>
-
     </div>
 
+    
+<script>
+
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", () => {
+
+    navLinks.classList.toggle("show");
+
+});
+
+</script>
 </nav>

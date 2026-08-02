@@ -1,3 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+:root{
+
+    --primary:#041E42;
+    --secondary:#1E293B;
+
+    --gold:#D4AF37;
+    --gold-dark:#B89028;
+
+    --background:#F8F5F0;
+    --white:#FFFFFF;
+
+    --text:#1E293B;
+    --text-light:#64748B;
+
+    --border:#E5E7EB;
+
+    --success:#16A34A;
+    --danger:#DC2626;
+
+    --shadow:0 10px 25px rgba(0,0,0,.08);
+
+    --radius:16px;
+
+}
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+body{
+
+    background:var(--background);
+
+    color:var(--text);
+
+    font-family:'Inter',sans-serif;
+
+    line-height:1.7;
+
+}
+
+/* ========================================= */
+
+h1,h2,h3,h4,h5{
+
+    font-family:'Playfair Display',serif;
+
+    color:var(--primary);
+
+}
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+img{
+
+    max-width:100%;
+
+    display:block;
+
+}
+
+button{
+
+    cursor:pointer;
+
+    border:none;
+
+    font-family:inherit;
+
+}
+
+/* ========================================= */
+
+.container{
+
+    width:90%;
+
+    max-width:1300px;
+
+    margin:auto;
+
+}
 /* ==========================================
    HERO
 ========================================== */
@@ -389,93 +487,239 @@ flex-wrap:wrap;
 
 }
 
+
+
+
+/* buttons */
+.btn-primary{
+
+    display:inline-block;
+
+    background:var(--gold);
+
+    color:var(--primary);
+
+    padding:14px 28px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.btn-primary:hover{
+
+    background:var(--gold-dark);
+
+    transform:translateY(-3px);
+
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+
+}
+
+.btn-secondary{
+
+    display:inline-block;
+
+    background:var(--white);
+
+    color:var(--primary);
+
+    padding:14px 28px;
+
+    border-radius:12px;
+
+    border:2px solid var(--gold);
+
+    font-weight:600;
+    
+    transition:.3s;
+
+}
+
+.btn-secondary:hover{
+
+    transform:translateY(-3px);
+
+    background:var(--gold);
+
+}
+
+
 /* ==========================================
-RESPONSIVE
+TABLETS
 ========================================== */
 
-@media(max-width:900px){
-
-.hero h1{
-
-font-size:46px;
-
-}
-
-.hero p{
-
-font-size:18px;
-
-}
-
-.featured h2,
-.stats h2,
-.why h2,
-.feedback-section h2{
-
-font-size:34px;
-
-}
-
-}
-
-@media(max-width:600px){
+@media (max-width: 992px){
 
 .hero{
 
-padding:90px 20px;
+    flex-direction:column;
+
+    text-align:center;
+
+    gap:40px;
+
+    padding:30px 20px;
 
 }
 
-.hero h1{
+.hero-content h1{
 
-font-size:38px;
+    font-size:2rem;
+
+}
+
+.hero-content p{
+
+    font-size:1.1rem;
 
 }
 
 .hero-buttons{
 
-flex-direction:column;
+    justify-content:center;
 
 }
 
-.feedback-buttons{
+.featured h2,
+.stats h2,
+.why h2{
 
-flex-direction:column;
-
-}
-
-}
-.books-grid{
-
-    display:grid;
-
-    grid-template-columns:repeat(4,1fr);
-
-    gap:20px;
-
-}
-
-@media(max-width:768px){
-
-.books-grid{
-
-grid-template-columns:repeat(2,1fr);
+    font-size:34px;
 
 }
 
 }
+/* ==========================================
+MOBILE
+========================================== */
 
-@media(max-width:500px){
+@media (max-width: 768px){
 
-.books-grid{
+.hero{
 
-grid-template-columns:1fr;
+    gap:25px;
+
+    padding:20px;
+
+}
+
+.hero-image img{
+
+    max-width:280px;
+
+}
+
+.hero-content h1{
+
+    font-size:1.5rem;
+
+    line-height:1.4;
+
+}
+
+.hero-content p{
+
+    font-size:1rem;
+
+}
+
+.hero-buttons{
+
+    flex-direction:column;
+
+    width:100%;
+
+}
+
+.hero-buttons a{
+
+    width:100%;
+
+    text-align:center;
+
+}
+
+.featured{
+
+    padding:60px 20px;
+
+}
+
+.featured h2,
+.stats h2,
+.why h2{
+
+    font-size:28px;
+
+}
+
+.card-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+.stats-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+.why-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+.card,
+.stat-card,
+.why-card{
+
+    padding:25px;
+
+}
+
+.book-cover{
+
+    height:260px;
 
 }
 
 }
-.table-wrapper{
+/* ==========================================
+SMALL PHONES
+========================================== */
 
-    overflow-x:auto;
+@media (max-width:480px){
+
+.hero-content h1{
+
+    font-size:1.3rem;
+
+}
+
+.hero-image img{
+
+    max-width:220px;
+
+}
+
+.stat-card h1{
+
+    font-size:42px;
+
+}
+
+.featured h2,
+.stats h2,
+.why h2{
+
+    font-size:24px;
+
+}
 
 }
