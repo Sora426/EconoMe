@@ -12,9 +12,12 @@ h1 {
     font-weight: 700;
 }
 
-.articles {
-    max-width: 800px;
-    margin: auto;
+.articles{
+
+    max-width:1000px;
+    width:92%;
+    margin:auto;
+
 }
 
 .article-card {
@@ -24,12 +27,15 @@ h1 {
     border-bottom: 1px solid #e5e5e5;
 }
 
-.article-card img {
-    width: 180px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 5px;
-    order: 2;
+.article-card img{
+
+    width:220px;
+    height:150px;
+
+    object-fit:cover;
+
+    flex-shrink:0;
+
 }
 
 .article-card h2 {
@@ -84,4 +90,27 @@ h1 {
     .article-card h2 {
         font-size: 24px;
     }
+    .article-card{
+
+    padding:30px 0;
+    
+}
+.article-card a{
+
+    display:inline-block;
+
+    padding:10px 0;
+
+}
+.article-card{
+
+    transition:.25s;
+
+}
+
+.article-card:hover{
+
+    transform:translateY(-4px);
+
+}
 }

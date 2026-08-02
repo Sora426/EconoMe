@@ -6,10 +6,12 @@ body {
     color: #222;
 }
 
-.content {
-    max-width: 900px;
-    margin: 50px auto;
-    padding: 0 20px;
+.content{
+
+    max-width:1000px;
+    width:92%;
+    margin:50px auto;
+
 }
 
 h1 {
@@ -50,13 +52,26 @@ h1 {
     font-size: 15px;
 }
 
-.card a {
-    background: #000;
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 22px;
-    border-radius: 6px;
-    white-space: nowrap;
+.card a{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    min-width:130px;
+    min-height:44px;
+
+    background:#000;
+    color:#fff;
+
+    text-decoration:none;
+
+    padding:12px 24px;
+
+    border-radius:8px;
+
+    transition:.25s;
+
 }
 
 .card a:hover {
@@ -75,5 +90,26 @@ h1 {
         width:100%;
         text-align:center;
     }
+
+}
+@media(max-width:480px){
+
+h1{
+
+    font-size:30px;
+
+}
+
+.card h2{
+
+    font-size:20px;
+
+}
+
+.card p{
+
+    font-size:14px;
+
+}
 
 }

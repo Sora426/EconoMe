@@ -35,20 +35,18 @@
 
         <!-- Search -->
 
-        <form class="search-form" action="/search" method="GET">
+        <div class="menu-content">
 
-            <input
-                type="text"
-                name="q"
-                placeholder="🔍 Search...">
+<form class="search-form" action="/search" method="GET">
 
-        </form>
+    <input
+        type="text"
+        name="q"
+        placeholder="🔍 Search...">
 
-        <!-- Right Side -->
+</form>
 
-        
-
-            <div class="nav-right">
+<div class="nav-right">
 
 <% if(user){ %>
 
@@ -62,75 +60,52 @@
 
 <div class="profile-dropdown">
 
-<a href="/dashboard">
+<a href="/dashboard">📊 Dashboard</a>
 
-📊 Dashboard
+<a href="/favorites">❤️ Favorites</a>
 
-</a>
-
-<a href="/favorites">
-
-❤️ Favorites
-
-</a>
-
-<a href="/premium">
-
-👑 Premium
-
-</a>
+<a href="/premium">👑 Premium</a>
 
 <% if(user.role==="admin"){ %>
 
-<a href="/admin">
-
-⚙ Admin Panel
-
-</a>
+<a href="/admin">⚙ Admin Panel</a>
 
 <% } %>
 
 <hr>
 
-<a href="/logout">
-
-🚪 Logout
-
-</a>
+<a href="/logout">🚪 Logout</a>
 
 </div>
 
 </div>
 
-<% } else { %>
+<% }else{ %>
 
-<a href="/login" class="nav-btn">
+<a href="/login" class="nav-btn">Login</a>
 
-Login
-
-</a>
-
-<a href="/register" class="btn-primary">
-
-Register
-
-</a>
+<a href="/register" class="btn-primary">Register</a>
 
 <% } %>
 
 </div>
 
-    </div>
+</div>
 
     
 <script>
 
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
+const menuContent = document.querySelector(".menu-content");
 
-menuToggle.addEventListener("click", () => {
+menuToggle.addEventListener("click",()=>{
 
     navLinks.classList.toggle("show");
+    menuContent.classList.toggle("show");
+
+    menuToggle.textContent =
+        navLinks.classList.contains("show") ? "✕" : "☰";
 
 });
 
