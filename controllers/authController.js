@@ -43,50 +43,34 @@ exports.register = async (req, res) => {
 
         try{
 
-            await transporter.sendMail({
-
-                from: process.env.EMAIL_FROM,
-
-                to: email,
-
-                subject: "Verify your EconoMe account",
-
-                html: `
-                    <h2>Welcome to EconoMe!</h2>
-
-                    <p>
-                        Thank you for registering.
-                    </p>
-
-                    <p>
-                        Click the button below to verify your email.
-                    </p>
-
-                    <a
-                    href="${verifyLink}"
-                    style="
-                        background:#D4AF37;
-                        color:white;
-                        padding:12px 22px;
-                        text-decoration:none;
-                        border-radius:8px;
-                        display:inline-block;
-                    ">
-                        Verify Email
-                    </a>
-
-                    <p>
-                        If you didn't create this account, you can ignore this email.
-                    </p>
-                `
-
-            });
+            await transporter.sendMail(
+    {
+        from: process.env.EMAIL_FROM,
+        to: email,
+        subject: "Verify your EconoMe account",
+        html: `...`
+    },
+    (err, info) => {
+        if (err) {
+            console.error("EMAIL ERROR:", err);
+        } else {
+            console.log("EMAIL SENT:", info.response);
+        }
+    }
+);
 
         }catch(error){
 
             console.log(error);
 
         }
+        transporter.verify((err, success) => {
+    if (err) {
+        console.error("SMTP ERROR:", err);
+    } else {
+        console.log("SMTP READY");
+    }
+});
 
         res.send("Registration successful! Please check your email to verify your account.");
 
