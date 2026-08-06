@@ -69,39 +69,21 @@ app.get("/debug/verify/:email", (req, res) => {
     );
 
 });
-app.get("/debug/columns", (req, res) => {
+app.get("/debug/users", (req, res) => {
 
-    db.all("PRAGMA table_info(users)", (err, rows) => {
+    db.all(
+        "SELECT id, name, email, isVerified FROM users",
+        (err, rows) => {
 
-        if (err) return res.send(err.message);
+            if (err) return res.send(err.message);
 
-        res.json(rows);
-
-    });
-
-});
-app.get("/debug/migrate-users", (req, res) => {
-
-    db.run(
-        "ALTER TABLE users ADD COLUMN isVerified INTEGER DEFAULT 0",
-        (err1) => {
-
-            db.run(
-                "ALTER TABLE users ADD COLUMN verificationToken TEXT",
-                (err2) => {
-
-                    res.json({
-                        isVerified: err1 ? err1.message : "Added",
-                        verificationToken: err2 ? err2.message : "Added"
-                    });
-
-                }
-            );
+            res.json(rows);
 
         }
     );
 
 });
+
 const PORT = 3000;
 
 app.listen(PORT, () => {
