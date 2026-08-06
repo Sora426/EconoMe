@@ -5,5 +5,6 @@ const auth = require("../middleware/auth");
 const controller = require("../controllers/bookProgressController");
 
 router.post("/save", auth, controller.save);
+ 
 
 module.exports = router;
