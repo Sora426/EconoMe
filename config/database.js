@@ -12,7 +12,7 @@ if (process.env.RENDER) {
     dbPath = path.join(__dirname, "../econome.db");
 
 }
-
+console.log("Database path:", dbPath);
 const db = new sqlite3.Database(dbPath, (err) => {
 
     if (err) {
