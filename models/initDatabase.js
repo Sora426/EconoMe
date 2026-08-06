@@ -11,7 +11,10 @@ password TEXT NOT NULL,
 role TEXT DEFAULT 'user',
 isPremium INTEGER DEFAULT 0,
 premiumUntil DATETIME,
-createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+isVerified INTEGER DEFAULT 0,
+
+verificationToken TEXT,
 )
 `);
 

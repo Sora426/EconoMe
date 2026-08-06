@@ -4,20 +4,29 @@ class User {
 
     static create(user, callback) {
 
-        db.run(
-            `
-            INSERT INTO users(name,email,password)
-            VALUES(?,?,?)
-            `,
-            [
-                user.name,
-                user.email,
-                user.password
-            ],
-            callback
-        );
+    db.run(
+        `
+        INSERT INTO users
+        (
+            name,
+            email,
+            password,
+            verificationToken,
+            isVerified
+        )
+        VALUES(?,?,?,?,?)
+        `,
+        [
+            user.name,
+            user.email,
+            user.password,
+            user.verificationToken,
+            0
+        ],
+        callback
+    );
 
-    }
+}
 
     static findByEmail(email, callback) {
 
@@ -31,6 +40,42 @@ class User {
         );
 
     }
+    static findByVerificationToken(token, callback){
+
+    db.get(
+
+        `
+        SELECT *
+        FROM users
+        WHERE verificationToken=?
+        `,
+
+        [token],
+
+        callback
+
+    );
+
+}
+static verifyUser(id, callback){
+
+    db.run(
+
+        `
+        UPDATE users
+        SET
+            isVerified=1,
+            verificationToken=NULL
+        WHERE id=?
+        `,
+
+        [id],
+
+        callback
+
+    );
+
+}
 
     static findById(id, callback){
 
