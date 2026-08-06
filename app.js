@@ -80,6 +80,28 @@ app.get("/debug/columns", (req, res) => {
     });
 
 });
+app.get("/debug/migrate-users", (req, res) => {
+
+    db.run(
+        "ALTER TABLE users ADD COLUMN isVerified INTEGER DEFAULT 0",
+        (err1) => {
+
+            db.run(
+                "ALTER TABLE users ADD COLUMN verificationToken TEXT",
+                (err2) => {
+
+                    res.json({
+                        isVerified: err1 ? err1.message : "Added",
+                        verificationToken: err2 ? err2.message : "Added"
+                    });
+
+                }
+            );
+
+        }
+    );
+
+});
 const PORT = 3000;
 
 app.listen(PORT, () => {
