@@ -196,6 +196,7 @@ router.get(
     quizController.newQuestion
 );
 
+
 router.post(
     "/quizzes/:id/questions",
     admin,
