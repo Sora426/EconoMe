@@ -50,7 +50,25 @@ app.use(session({
         maxAge: 1000 * 60 * 60 * 24
     }
 }));
+app.get("/debug/verify/:email", (req, res) => {
 
+    db.run(
+        `
+        UPDATE users
+        SET isVerified = 1
+        WHERE email = ?
+        `,
+        [req.params.email],
+        function(err){
+
+            if(err) return res.send(err.message);
+
+            res.send("Updated " + this.changes + " user(s).");
+
+        }
+    );
+
+});
 const PORT = 3000;
 
 app.listen(PORT, () => {
