@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const session = require("express-session");
-
+const db = require("./config/database");
 require("./models/initDatabase");
 
 const premium = require("./middleware/premium");
