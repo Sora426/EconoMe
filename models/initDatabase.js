@@ -14,7 +14,7 @@ premiumUntil DATETIME,
 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
 isVerified INTEGER DEFAULT 0,
 
-verificationToken TEXT,
+verificationToken TEXT
 )
 `);
 
