@@ -168,7 +168,7 @@ exports.show = (req, res) => {
         Question.getByQuiz(req.params.id, (err, questions) => {
 
             if (err) return res.send(err.message);
-
+           console.log("QUESTIONS:", questions);
             res.render("quizzes/show", {
 
                 quiz,
