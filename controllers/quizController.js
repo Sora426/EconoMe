@@ -312,6 +312,23 @@ exports.show = (req, res) => {
             return res.send("Quiz not found");
         }
 
+        // Premium quiz protection
+        if (quiz.isPremium === 1) {
+
+            if (!req.session.user) {
+
+                return res.redirect("/login");
+
+            }
+
+            if (!req.session.user.isPremium) {
+
+                return res.redirect("/premium");
+
+            }
+
+        }
+
         Question.getAllByQuiz(req.params.id, (err, questions) => {
 
             if (err) return res.send(err.message);
