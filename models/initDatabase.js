@@ -94,6 +94,40 @@ correctAnswer TEXT,
 FOREIGN KEY(quizId) REFERENCES quizzes(id)
 )
 `);
+// QUIZ MIGRATION
+
+db.run(
+    `ALTER TABLE quizzes ADD COLUMN isPremium INTEGER DEFAULT 0`,
+    (err) => {
+
+        if (err && !err.message.includes("duplicate column name")) {
+            console.log("Quiz migration error:", err.message);
+        }
+
+    }
+);
+
+db.run(
+    `ALTER TABLE questions ADD COLUMN type TEXT DEFAULT 'multiple'`,
+    (err) => {
+
+        if (err && !err.message.includes("duplicate column name")) {
+            console.log("Question type migration error:", err.message);
+        }
+
+    }
+);
+
+db.run(
+    `ALTER TABLE questions ADD COLUMN image TEXT`,
+    (err) => {
+
+        if (err && !err.message.includes("duplicate column name")) {
+            console.log("Question image migration error:", err.message);
+        }
+
+    }
+);
 
 db.run(`
 CREATE TABLE IF NOT EXISTS quiz_results(

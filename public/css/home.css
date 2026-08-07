@@ -437,14 +437,12 @@ FEEDBACK
 .feedback-section{
 
 background:
-linear-gradient(
-135deg,
-#0F172A,
-#1E293B
-);
+
+#0F172A
+;
 
 padding:100px 20px;
-
+padding-bottom: 50px;
 text-align:center;
 
 color:white;
@@ -721,5 +719,73 @@ SMALL PHONES
     font-size:24px;
 
 }
+
+}
+.site-footer {
+
+    margin-top: 0px;
+
+    padding: 35px 20px;
+
+    background:
+#0F172A;
+
+    text-align: center;
+
+}
+
+.footer-links {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 25px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 20px;
+
+}
+
+.footer-links a {
+
+    color: #D4AF37;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+}
+
+.footer-links a:hover {
+
+    color: white;
+
+}
+
+.site-footer p {
+
+    color: #aaa;
+
+    font-size: 13px;
+
+    margin: 0;
+
+}
+
+@media(max-width:600px) {
+
+    .footer-links {
+
+        flex-direction: column;
+
+        gap: 12px;
+
+    }
 
 }

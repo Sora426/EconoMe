@@ -1,0 +1,137 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #fafafa;
+    color: #222;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.legal-container {
+    max-width: 850px;
+    width: 92%;
+    margin: 60px auto;
+    background: white;
+    padding: 50px 60px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.06);
+}
+
+.legal-container h1 {
+    font-size: 42px;
+    color: #0F172A;
+    margin: 0 0 10px;
+}
+
+.updated {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 45px;
+}
+
+.legal-container section {
+    margin-bottom: 35px;
+}
+
+.legal-container h2 {
+    font-size: 24px;
+    color: #0F172A;
+    margin-bottom: 12px;
+}
+
+.legal-container p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.legal-container ul {
+    color: #555;
+    line-height: 1.8;
+    padding-left: 25px;
+}
+
+.legal-container a {
+    color: #B08D19;
+    font-weight: 600;
+}
+
+.contact-container {
+    max-width: 700px;
+    width: 92%;
+    margin: 70px auto;
+    text-align: center;
+}
+
+.contact-container h1 {
+    font-size: 42px;
+    color: #0F172A;
+    margin-bottom: 15px;
+}
+
+.contact-intro {
+    color: #666;
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+.contact-card {
+    background: white;
+    padding: 45px;
+    border-radius: 18px;
+    border: 2px solid #D4AF37;
+    box-shadow: 0 10px 30px rgba(0,0,0,.07);
+}
+
+.contact-card h2 {
+    color: #0F172A;
+    margin-bottom: 15px;
+}
+
+.contact-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.contact-email {
+    display: inline-block;
+    margin: 20px 0;
+    padding: 13px 22px;
+    border-radius: 8px;
+    background: #0F172A;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.contact-email:hover {
+    background: #D4AF37;
+}
+
+.contact-note {
+    font-size: 14px;
+}
+
+@media (max-width: 700px) {
+
+    .legal-container {
+        padding: 30px 22px;
+        margin: 30px auto;
+    }
+
+    .legal-container h1,
+    .contact-container h1 {
+        font-size: 32px;
+    }
+
+    .legal-container h2 {
+        font-size: 21px;
+    }
+
+    .contact-card {
+        padding: 30px 20px;
+    }
+
+}
