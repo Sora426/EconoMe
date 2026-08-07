@@ -98,21 +98,49 @@ exports.newQuestion = (req, res) => {
 };
 exports.createQuestion = (req, res) => {
 
+    const type = req.body.type;
+
+    let correctAnswer;
+
+    if (type === "truefalse") {
+
+        correctAnswer = req.body.trueFalseAnswer;
+
+    } else {
+
+        correctAnswer = req.body.correctAnswer;
+
+    }
+
     const question = {
 
         quizId: req.params.id,
 
         question: req.body.question,
 
-        optionA: req.body.optionA,
+        optionA: type === "multiple"
+            ? req.body.optionA
+            : null,
 
-        optionB: req.body.optionB,
+        optionB: type === "multiple"
+            ? req.body.optionB
+            : null,
 
-        optionC: req.body.optionC,
+        optionC: type === "multiple"
+            ? req.body.optionC
+            : null,
 
-        optionD: req.body.optionD,
+        optionD: type === "multiple"
+            ? req.body.optionD
+            : null,
 
-        correctAnswer: req.body.correctAnswer
+        correctAnswer,
+
+        type,
+
+        image: req.file
+            ? req.file.filename
+            : null
 
     };
 
@@ -124,10 +152,11 @@ exports.createQuestion = (req, res) => {
 
         }
 
-        res.redirect(`/admin/quizzes/${req.params.id}/questions`);
+        res.redirect(
+            `/admin/quizzes/${req.params.id}/questions`
+        );
 
     });
-
 
 };
 exports.show = (req, res) => {

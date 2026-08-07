@@ -198,8 +198,9 @@ router.get(
 
 
 router.post(
-    "/quizzes/:id/questions",
+    "/admin/quizzes/:id/questions",
     admin,
+    upload.single("image"),
     quizController.createQuestion
 );
 router.get(
