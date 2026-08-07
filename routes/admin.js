@@ -198,7 +198,8 @@ router.get(
 
 
 router.post(
-    "/admin/quizzes/:id/questions",
+    "/quizzes/:id/questions",
+    admin,
     upload.single("image"),
     quizController.createQuestion
 );
