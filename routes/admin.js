@@ -12,7 +12,7 @@ const materialController = require("../controllers/materialController");
 const materialUpload = require("../config/materialUpload");
 const feedbackController = require("../controllers/feedbackController");
 const userController=require("../controllers/userController");
-
+const upload = require("../config/multer");
 router.get(
     "/users",
     admin,
@@ -199,7 +199,6 @@ router.get(
 
 router.post(
     "/admin/quizzes/:id/questions",
-    admin,
     upload.single("image"),
     quizController.createQuestion
 );
