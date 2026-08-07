@@ -27,6 +27,7 @@ app.use(premium);
 // Routes
 app.use("/", require("./routes/index"));
 app.use("/", require("./routes/auth"));
+app.use(express.static("public"));
 app.use("/uploads", express.static("uploads"));
 app.use("/favorites",require("./routes/favorite"));
 app.use("/search", searchRoutes);
