@@ -27,53 +27,130 @@ method="POST">
 
 <div class="card">
 
-<h3>
+    <h3>
+        Question <%= index+1 %>
+    </h3>
 
-Question <%= index+1 %>
+    <p>
+        <%= q.question %>
+    </p>
 
-</h3>
 
-<p>
+    <!-- QUESTION IMAGE -->
 
-<%= q.question %>
+    <% if(q.image){ %>
 
-</p>
+        <img
+            src="/uploads/images/<%= q.image %>"
+            class="question-image"
+            alt="Question image"
+        >
 
-<label class="option">
-    <span class="option-text"><%= q.optionA %></span>
-    <input
-        type="radio"
-        name="question_<%= q.id %>"
-        value="A"
-        required>
-</label>
+    <% } %>
 
-<label class="option">
-    <span class="option-text"><%= q.optionB %></span>
-    <input
-        type="radio"
-        name="question_<%= q.id %>"
-        value="B">
-</label>
 
-<label class="option">
-    <span class="option-text"><%= q.optionC %></span>
-    <input
-        type="radio"
-        name="question_<%= q.id %>"
-        value="C">
-</label>
+    <!-- MULTIPLE CHOICE -->
 
-<label class="option">
-    <span class="option-text"><%= q.optionD %></span>
-    <input
-        type="radio"
-        name="question_<%= q.id %>"
-        value="D">
-</label>
+    <% if(q.type === "multiple"){ %>
+
+        <label class="option">
+
+            <span class="option-text">
+                <%= q.optionA %>
+            </span>
+
+            <input
+                type="radio"
+                name="question_<%= q.id %>"
+                value="A"
+                required
+            >
+
+        </label>
+
+
+        <label class="option">
+
+            <span class="option-text">
+                <%= q.optionB %>
+            </span>
+
+            <input
+                type="radio"
+                name="question_<%= q.id %>"
+                value="B"
+            >
+
+        </label>
+
+
+        <label class="option">
+
+            <span class="option-text">
+                <%= q.optionC %>
+            </span>
+
+            <input
+                type="radio"
+                name="question_<%= q.id %>"
+                value="C"
+            >
+
+        </label>
+
+
+        <label class="option">
+
+            <span class="option-text">
+                <%= q.optionD %>
+            </span>
+
+            <input
+                type="radio"
+                name="question_<%= q.id %>"
+                value="D"
+            >
+
+        </label>
+
+
+    <!-- TRUE / FALSE -->
+
+    <% } else if(q.type === "truefalse"){ %>
+
+        <label class="option">
+
+            <span class="option-text">
+                True
+            </span>
+
+            <input
+                type="radio"
+                name="question_<%= q.id %>"
+                value="True"
+                required
+            >
+
+        </label>
+
+
+        <label class="option">
+
+            <span class="option-text">
+                False
+            </span>
+
+            <input
+                type="radio"
+                name="question_<%= q.id %>"
+                value="False"
+            >
+
+        </label>
+
+    <% } %>
+
 </div>
-
-
 
 <% }) %>
 
