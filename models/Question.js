@@ -29,36 +29,40 @@ class Question {
 
 }
 
-    static create(question, callback){
+    static create(question, callback) {
 
-        db.run(
-            `
-            INSERT INTO questions
-            (
-                quizId,
-                question,
-                optionA,
-                optionB,
-                optionC,
-                optionD,
-                correctAnswer
-            )
+    db.run(
+        `
+        INSERT INTO questions
+        (
+            quizId,
+            question,
+            optionA,
+            optionB,
+            optionC,
+            optionD,
+            correctAnswer,
+            type,
+            image
+        )
 
-            VALUES(?,?,?,?,?,?,?)
-            `,
-            [
-                question.quizId,
-                question.question,
-                question.optionA,
-                question.optionB,
-                question.optionC,
-                question.optionD,
-                question.correctAnswer
-            ],
-            callback
-        );
+        VALUES(?,?,?,?,?,?,?,?,?)
+        `,
+        [
+            question.quizId,
+            question.question,
+            question.optionA,
+            question.optionB,
+            question.optionC,
+            question.optionD,
+            question.correctAnswer,
+            question.type || "multiple",
+            question.image || null
+        ],
+        callback
+    );
 
-    }
+}
 
     static delete(id, callback){
 
@@ -79,18 +83,20 @@ class Question {
 
 }
 
-static update(id, question, callback){
+static update(id, question, callback) {
 
     db.run(
         `
         UPDATE questions
         SET
-        question=?,
-        optionA=?,
-        optionB=?,
-        optionC=?,
-        optionD=?,
-        correctAnswer=?
+            question=?,
+            optionA=?,
+            optionB=?,
+            optionC=?,
+            optionD=?,
+            correctAnswer=?,
+            type=?,
+            image=?
 
         WHERE id=?
         `,
@@ -101,22 +107,11 @@ static update(id, question, callback){
             question.optionC,
             question.optionD,
             question.correctAnswer,
+            question.type || "multiple",
+            question.image || null,
             id
         ],
         callback
-    );
-
-}
-static deleteByQuiz(quizId, callback){
-
-    db.run(
-
-        "DELETE FROM questions WHERE quizId=?",
-
-        [quizId],
-
-        callback
-
     );
 
 }
