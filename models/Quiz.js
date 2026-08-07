@@ -23,44 +23,47 @@ class Quiz {
 
     static create(quiz, callback){
 
-        db.run(
-    `
-    INSERT INTO quizzes(title, category)
-    VALUES(?,?)
-    `,
-    [
-        quiz.title,
-        quiz.category
-    ],
-    function(err){
+    db.run(
+        `
+        INSERT INTO quizzes(title, category, isPremium)
+        VALUES(?,?,?)
+        `,
+        [
+            quiz.title,
+            quiz.category,
+            quiz.isPremium ? 1 : 0
+        ],
+        function(err){
 
-        callback(err, this.lastID);
+            callback(err, this.lastID);
 
-    }
-);
+        }
+    );
 
-    }
+}
 
     static update(id, quiz, callback){
 
-        db.run(
-            `
-            UPDATE quizzes
-            SET
+    db.run(
+        `
+        UPDATE quizzes
+        SET
             title=?,
-            category=?
+            category=?,
+            isPremium=?
 
-            WHERE id=?
-            `,
-            [
-                quiz.title,
-                quiz.category,
-                id
-            ],
-            callback
-        );
+        WHERE id=?
+        `,
+        [
+            quiz.title,
+            quiz.category,
+            quiz.isPremium ? 1 : 0,
+            id
+        ],
+        callback
+    );
 
-    }
+}
 
     static delete(id, callback){
 

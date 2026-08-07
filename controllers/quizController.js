@@ -37,25 +37,27 @@ exports.new=(req,res)=>{
 
 };
 
-exports.create=(req,res)=>{
+exports.create = (req, res) => {
 
-    const quiz={
+    const { title, category } = req.body;
 
-        title:req.body.title,
+    const isPremium = req.body.isPremium ? 1 : 0;
 
-        category:req.body.category
+    Quiz.create(
+        {
+            title,
+            category,
+            isPremium
+        },
+        (err, id) => {
 
-    };
+            if (err) {
+                return res.send(err.message);
+            }
 
-    Quiz.create(quiz, (err, quizId) => {
-
-    if (err) {
-        return res.send(err.message);
-    }
-
-    res.redirect(`/admin/quizzes/${quizId}/questions`);
-
-});
+            res.redirect("/admin/quizzes");
+        }
+    );
 
 };
 exports.delete = (req, res) => {
