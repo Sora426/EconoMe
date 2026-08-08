@@ -48,7 +48,7 @@ router.get(
 "/articles/new",
 
 admin,
-
+upload.single("image"),
 articleController.new
 
 );
@@ -92,7 +92,7 @@ router.post(
 
 "/articles",
 admin,
-imageUpload.single("image"),
+upload.single("image"),
 articleController.create
 
 );
@@ -105,7 +105,7 @@ articleController.edit
 router.post(
 "/articles/update/:id",
 admin,
-imageUpload.single("image"),
+upload.single("image"),
 articleController.update
 );
 
