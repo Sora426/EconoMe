@@ -3,45 +3,61 @@
 
 <head>
 
-<%- include("../partials/head",{title:"Quizzes"}) %>
+    <%- include("../partials/head",{title:"Quizzes"}) %>
 
-<link rel="stylesheet" href="/css/quiz.css">
+    <link rel="stylesheet" href="/css/quiz.css">
 
 </head>
 
 <body>
 
-<%- include("../partials/navbar") %>
+    <%- include("../partials/navbar") %>
 
-<div class="content">
+    <div class="content">
 
-<h1>Economics Quizzes</h1>
+        <h1>Economics Quizzes</h1>
 
-<% quizzes.forEach(quiz=>{ %>
+        <% quizzes.forEach(quiz=>{ %>
 
-<div class="card">
+            <div class="card">
 
-<h2><%= quiz.title %></h2>
+                <div class="quiz-info">
 
-<p>
+                    <div class="quiz-title-row">
 
-<%= quiz.category %>
+                        <h2><%= quiz.title %></h2>
 
-</p>
+                        <% if (quiz.isPremium) { %>
 
-<a href="/quizzes/<%= quiz.id %>">
+                            <span class="premium-badge">
+                                Premium
+                            </span>
 
-Take Quiz
+                        <% } else { %>
 
-</a>
+                            <span class="free-badge">
+                                Free
+                            </span>
 
-</div>
+                        <% } %>
 
-<br>
+                    </div>
 
-<% }) %>
+                    <p>
+                        <%= quiz.category %>
+                    </p>
 
-</div>
+                </div>
+
+                <a href="/quizzes/<%= quiz.id %>">
+                    Take Quiz
+                </a>
+
+            </div>
+
+        <% }) %>
+
+    </div>
 
 </body>
 
