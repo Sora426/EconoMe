@@ -149,16 +149,40 @@ button:hover{
     }
 
 }
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+
+    margin-bottom: 25px;
+}
+
+.question-text {
+    flex: 1;
+    margin: 0;
+}
+
 .question-image {
-    float: right;
+    flex-shrink: 0;
 
     width: 220px;
-    max-width: 35%;
     max-height: 180px;
 
     object-fit: contain;
 
-    margin: 0 0 20px 30px;
-
     border-radius: 8px;
+}
+@media (max-width: 600px) {
+
+    .question-header {
+        flex-direction: column;
+    }
+
+    .question-image {
+        width: 100%;
+        max-width: 220px;
+        align-self: center;
+    }
+
 }

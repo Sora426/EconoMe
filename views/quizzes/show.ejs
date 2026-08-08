@@ -35,22 +35,23 @@
                 </h3>
 
 
-                <p>
-                    <%= q.question %>
-                </p>
+                <div class="question-header">
 
+    <p class="question-text">
+        <%= q.question %>
+    </p>
 
-                <!-- QUESTION IMAGE -->
+    <% if(q.image){ %>
 
-                <% if(q.image){ %>
+        <img
+            src="/uploads/images/<%= q.image %>"
+            class="question-image"
+            alt="Question image"
+        >
 
-                    <img
-                        src="/uploads/images/<%= q.image %>"
-                        class="question-image"
-                        alt="Question image"
-                    >
+    <% } %>
 
-                <% } %>
+</div>
 
 
                 <!-- MULTIPLE CHOICE -->
