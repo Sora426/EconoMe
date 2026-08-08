@@ -82,6 +82,24 @@ class Question {
     );
 
 }
+static delete(id, callback) {
+
+    db.run(
+        "DELETE FROM questions WHERE id=?",
+        [id],
+        callback
+    );
+
+}
+static deleteByQuiz(quizId, callback) {
+
+    db.run(
+        "DELETE FROM questions WHERE quizId=?",
+        [quizId],
+        callback
+    );
+
+}
 
 static update(id, question, callback) {
 
