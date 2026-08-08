@@ -129,43 +129,54 @@ exports.edit = (req,res)=>{
     );
 
 };
-exports.update=(req,res)=>{
+exports.update = (req, res) => {
 
-    const article = {
+    Article.getById(req.params.id, (err, oldArticle) => {
 
-    title:req.body.title,
-    category:req.body.category,
-    description:req.body.description,
-
-    preview:req.body.preview,
-
-    content:req.body.content,
-
-    image:req.file ? req.file.filename : null,
-
-    isPremium:req.body.isPremium ? 1 : 0
-
-};
-
-    Article.update(
-
-        req.params.id,
-
-        article,
-
-        err=>{
-
-            if(err){
-
-                return res.send(err.message);
-
-            }
-
-            res.redirect("/admin/articles");
-
+        if (err) {
+            return res.send(err.message);
         }
 
-    );
+        if (!oldArticle) {
+            return res.send("Article not found");
+        }
+
+        const article = {
+
+            title: req.body.title,
+
+            category: req.body.category,
+
+            description: req.body.description,
+
+            preview: req.body.preview,
+
+            content: req.body.content,
+
+            // Keep old image if no new image was uploaded
+            image: req.file
+                ? req.file.filename
+                : oldArticle.image,
+
+            isPremium: req.body.isPremium ? 1 : 0
+
+        };
+
+        Article.update(
+            req.params.id,
+            article,
+            err => {
+
+                if (err) {
+                    return res.send(err.message);
+                }
+
+                res.redirect("/admin/articles");
+
+            }
+        );
+
+    });
 
 };
 exports.delete=(req,res)=>{
