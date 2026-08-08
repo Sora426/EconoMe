@@ -140,6 +140,26 @@ static search(keyword, callback) {
     );
 
 }
+static updatePremium(id, isPremium, callback) {
+
+    db.run(
+        `
+        UPDATE quizzes
+        SET isPremium = ?
+        WHERE id = ?
+        `,
+        [
+            isPremium,
+            id
+        ],
+        function(err) {
+
+            callback(err);
+
+        }
+    );
+
+}
 }
 
 module.exports = Quiz;

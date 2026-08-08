@@ -33,7 +33,33 @@ Category:
 <%= quiz.category %>
 
 </p>
+<form
+    action="/admin/quizzes/<%= quiz.id %>/premium"
+    method="POST"
+>
 
+    <label>
+
+        <input
+            type="checkbox"
+            name="isPremium"
+            value="1"
+            <%= quiz.isPremium ? "checked" : "" %>
+        >
+
+        👑 Premium Quiz
+
+    </label>
+
+    <p>
+        Premium users only.
+    </p>
+
+    <button type="submit">
+        Save
+    </button>
+
+</form>
 <hr>
 
 <a href="/admin/quizzes/<%= quiz.id %>/questions/new">

@@ -495,4 +495,25 @@ exports.progress = (req,res)=>{
     );
 
 };
+exports.updateQuizPremium = (req, res) => {
+
+    const isPremium = req.body.isPremium ? 1 : 0;
+
+    Quiz.updatePremium(
+        req.params.id,
+        isPremium,
+        err => {
+
+            if (err) {
+                return res.send(err.message);
+            }
+
+            res.redirect(
+                `/admin/quizzes/${req.params.id}/questions`
+            );
+
+        }
+    );
+
+};
 

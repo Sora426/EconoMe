@@ -219,7 +219,10 @@ router.post(
     upload.single("image"),
     quizController.updateQuestion
 );
-
+router.post(
+    "/quizzes/:id/premium",
+    adminController.updateQuizPremium
+);
 router.get(
 "/questions/delete/:id",
 admin,
