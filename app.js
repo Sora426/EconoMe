@@ -12,27 +12,39 @@ const app = express();
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-app.use(session({secret: "econome_secret_key",
-    
+app.use(session({
+    secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        maxAge: 1000 * 60 * 60 * 24
+    }
 }));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use(premium);
 
-// Routes
-app.use("/", require("./routes/index"));
-app.use("/", require("./routes/auth"));
-app.use(express.static("public"));
+// UPLOADS
 app.use(
     "/uploads",
     express.static("/var/data/uploads")
 );
-app.use("/favorites",require("./routes/favorite"));
+
+
+// PREMIUM
+app.use(premium);
+
+
+// Routes
+app.use("/", require("./routes/index"));
+app.use("/", require("./routes/auth"));
+
+app.use("/favorites", require("./routes/favorite"));
 app.use("/search", searchRoutes);
 app.use("/articles", require("./routes/article"));
 app.use("/books", require("./routes/book"));
@@ -41,19 +53,9 @@ app.use("/quizzes", require("./routes/quiz"));
 app.use("/premium", require("./routes/premium"));
 app.use("/admin", require("./routes/admin"));
 app.use("/dashboard", require("./routes/dashboard"));
-app.use("/admin", require("./routes/admin"));
 app.use("/book-progress", require("./routes/bookProgress"));
-app.use("/feedback",require("./routes/feedback"));
-app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production", // true when using HTTPS
-        maxAge: 1000 * 60 * 60 * 24
-    }
-}));
+app.use("/feedback", require("./routes/feedback"));
+
 app.get("/terms", (req, res) => {
     res.render("legal/terms");
 });
