@@ -14,6 +14,7 @@ const feedbackController = require("../controllers/feedbackController");
 const userController=require("../controllers/userController");
 const upload = require("../config/multer");
 const Quiz = require("../models/Quiz");
+
 router.get(
     "/users",
     admin,
@@ -222,7 +223,7 @@ router.post(
 );
 router.post(
     "/quizzes/:id/premium",
-    adminController.updateQuizPremium
+    quizController.updateQuizPremium
 );
 router.get(
 "/questions/delete/:id",
