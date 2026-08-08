@@ -215,9 +215,9 @@ quizController.editQuestion
 );
 
 router.post(
-"/questions/update/:id",
-admin,
-quizController.updateQuestion
+    "/questions/update/:id",
+    upload.single("image"),
+    quizController.updateQuestion
 );
 
 router.get(

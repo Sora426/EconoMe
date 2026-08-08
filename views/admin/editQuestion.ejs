@@ -3,81 +3,277 @@
 
 <head>
 
-
-
-<link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/admin.css">
 
 </head>
 
 <body>
-    
 
 <div class="admin-layout">
 
-<%- include("sidebar") %>
+    <%- include("sidebar") %>
 
-<div class="admin-content">
-<div class="content">
+    <div class="admin-content">
 
-<h1>Edit Question</h1>
+        <div class="content">
 
-<form
-action="/admin/questions/update/<%= question.id %>"
-method="POST">
+            <h1>Edit Question</h1>
 
-<textarea
-name="question"><%= question.question %></textarea>
+            <form
+                action="/admin/questions/update/<%= question.id %>"
+                method="POST"
+                enctype="multipart/form-data"
+            >
 
-<br><br>
+                <textarea
+                    name="question"
+                    required
+                ><%= question.question %></textarea>
 
-<input
-name="optionA"
-value="<%= question.optionA %>">
+                <br><br>
 
-<br><br>
 
-<input
-name="optionB"
-value="<%= question.optionB %>">
+                <!-- QUESTION TYPE -->
 
-<br><br>
+                <h4>Question Type</h4>
 
-<input
-name="optionC"
-value="<%= question.optionC %>">
+                <select
+                    name="type"
+                    id="questionType"
+                    onchange="changeQuestionType()"
+                >
 
-<br><br>
+                    <option
+                        value="multiple"
+                        <%= question.type === "multiple" ? "selected" : "" %>
+                    >
+                        Multiple Choice
+                    </option>
 
-<input
-name="optionD"
-value="<%= question.optionD %>">
+                    <option
+                        value="truefalse"
+                        <%= question.type === "truefalse" ? "selected" : "" %>
+                    >
+                        True / False
+                    </option>
 
-<br><br>
+                </select>
 
-<select
-name="correctAnswer">
+                <br><br>
 
-<option value="A" <%= question.correctAnswer==="A"?"selected":"" %>>A</option>
 
-<option value="B" <%= question.correctAnswer==="B"?"selected":"" %>>B</option>
+                <!-- IMAGE -->
 
-<option value="C" <%= question.correctAnswer==="C"?"selected":"" %>>C</option>
+                <h4>Question Image</h4>
 
-<option value="D" <%= question.correctAnswer==="D"?"selected":"" %>>D</option>
+                <% if(question.image){ %>
 
-</select>
+                    <img
+                        src="/uploads/images/<%= question.image %>"
+                        class="question-image"
+                        style="max-width:400px; display:block; margin-bottom:15px;"
+                    >
 
-<br><br>
+                    <label>
 
-<button>
+                        <input
+                            type="checkbox"
+                            name="removeImage"
+                            value="1"
+                        >
 
-Update Question
+                        Remove current image
 
-</button>
+                    </label>
 
-</form>
+                    <br><br>
+
+                <% } %>
+
+                <input
+                    type="file"
+                    name="image"
+                    accept="image/*"
+                >
+
+                <br><br>
+
+
+                <!-- MULTIPLE CHOICE -->
+
+                <div id="multipleChoice">
+
+                    <input
+                        name="optionA"
+                        placeholder="Option A"
+                        value="<%= question.optionA || '' %>"
+                    >
+
+                    <br><br>
+
+                    <input
+                        name="optionB"
+                        placeholder="Option B"
+                        value="<%= question.optionB || '' %>"
+                    >
+
+                    <br><br>
+
+                    <input
+                        name="optionC"
+                        placeholder="Option C"
+                        value="<%= question.optionC || '' %>"
+                    >
+
+                    <br><br>
+
+                    <input
+                        name="optionD"
+                        placeholder="Option D"
+                        value="<%= question.optionD || '' %>"
+                    >
+
+                    <br><br>
+
+                    <h4>Correct Answer</h4>
+
+                    <select
+                        name="correctAnswer"
+                        id="multipleCorrectAnswer"
+                    >
+
+                        <option
+                            value="A"
+                            <%= question.correctAnswer === "A" ? "selected" : "" %>
+                        >
+                            A
+                        </option>
+
+                        <option
+                            value="B"
+                            <%= question.correctAnswer === "B" ? "selected" : "" %>
+                        >
+                            B
+                        </option>
+
+                        <option
+                            value="C"
+                            <%= question.correctAnswer === "C" ? "selected" : "" %>
+                        >
+                            C
+                        </option>
+
+                        <option
+                            value="D"
+                            <%= question.correctAnswer === "D" ? "selected" : "" %>
+                        >
+                            D
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- TRUE / FALSE -->
+
+                <div
+                    id="trueFalse"
+                    style="display:none;"
+                >
+
+                    <h4>Correct Answer</h4>
+
+                    <select
+                        name="trueFalseAnswer"
+                        id="trueFalseAnswer"
+                    >
+
+                        <option
+                            value="True"
+                            <%= question.correctAnswer === "True" ? "selected" : "" %>
+                        >
+                            True
+                        </option>
+
+                        <option
+                            value="False"
+                            <%= question.correctAnswer === "False" ? "selected" : "" %>
+                        >
+                            False
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <br><br>
+
+                <button type="submit">
+                    Update Question
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
 
 </div>
+
+
+<script>
+
+function changeQuestionType() {
+
+    const type =
+        document.getElementById("questionType").value;
+
+    const multipleChoice =
+        document.getElementById("multipleChoice");
+
+    const trueFalse =
+        document.getElementById("trueFalse");
+
+    const multipleAnswer =
+        document.getElementById("multipleCorrectAnswer");
+
+    const trueFalseAnswer =
+        document.getElementById("trueFalseAnswer");
+
+
+    if(type === "multiple") {
+
+        multipleChoice.style.display = "block";
+
+        trueFalse.style.display = "none";
+
+        multipleAnswer.disabled = false;
+
+        trueFalseAnswer.disabled = true;
+
+    }
+
+
+    if(type === "truefalse") {
+
+        multipleChoice.style.display = "none";
+
+        trueFalse.style.display = "block";
+
+        multipleAnswer.disabled = true;
+
+        trueFalseAnswer.disabled = false;
+
+    }
+
+}
+
+
+changeQuestionType();
+
+</script>
 
 </body>
 

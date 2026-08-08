@@ -3,8 +3,10 @@
 
 <head>
 
-<%- include("../partials/head",{title:quiz.title}) %>
-<link rel="stylesheet" href="/css/quizshow.css">
+    <%- include("../partials/head",{title:quiz.title}) %>
+
+    <link rel="stylesheet" href="/css/quizshow.css">
+
 </head>
 
 <body>
@@ -13,154 +15,160 @@
 
 <div class="content">
 
-<h1>
-
-<%= quiz.title %>
-
-</h1>
-
-<form
-action="/quizzes/<%= quiz.id %>/submit"
-method="POST">
-
-<% questions.forEach((q,index)=>{ %>
-
-<div class="card">
-
-    <h3>
-        Question <%= index+1 %>
-    </h3>
-
-    <p>
-        <%= q.question %>
-    </p>
+    <h1>
+        <%= quiz.title %>
+    </h1>
 
 
-    <!-- QUESTION IMAGE -->
-
-    <% if(q.image){ %>
-
-        <img
-            src="/uploads/images/<%= q.image %>"
-            class="question-image"
-            alt="Question image"
-        >
-
-    <% } %>
+    <form
+        action="/quizzes/<%= quiz.id %>/submit"
+        method="POST"
+    >
 
 
-    <!-- MULTIPLE CHOICE -->
+        <% questions.forEach((q,index)=>{ %>
 
-    <% if(q.type === "multiple"){ %>
+            <div class="card">
 
-        <label class="option">
-
-            <span class="option-text">
-                <%= q.optionA %>
-            </span>
-
-            <input
-                type="radio"
-                name="question_<%= q.id %>"
-                value="A"
-                required
-            >
-
-        </label>
+                <h3>
+                    Question <%= index+1 %>
+                </h3>
 
 
-        <label class="option">
-
-            <span class="option-text">
-                <%= q.optionB %>
-            </span>
-
-            <input
-                type="radio"
-                name="question_<%= q.id %>"
-                value="B"
-            >
-
-        </label>
+                <p>
+                    <%= q.question %>
+                </p>
 
 
-        <label class="option">
+                <!-- QUESTION IMAGE -->
 
-            <span class="option-text">
-                <%= q.optionC %>
-            </span>
+                <% if(q.image){ %>
 
-            <input
-                type="radio"
-                name="question_<%= q.id %>"
-                value="C"
-            >
+                    <img
+                        src="/uploads/images/<%= q.image %>"
+                        class="question-image"
+                        alt="Question image"
+                    >
 
-        </label>
+                <% } %>
 
 
-        <label class="option">
+                <!-- MULTIPLE CHOICE -->
 
-            <span class="option-text">
-                <%= q.optionD %>
-            </span>
+                <% if(q.type === "multiple"){ %>
 
-            <input
-                type="radio"
-                name="question_<%= q.id %>"
-                value="D"
-            >
+                    <label class="option">
 
-        </label>
+                        <span class="option-text">
+                            <%= q.optionA %>
+                        </span>
 
+                        <input
+                            type="radio"
+                            name="question_<%= q.id %>"
+                            value="A"
+                            required
+                        >
 
-    <!-- TRUE / FALSE -->
-
-    <% } else if(q.type === "truefalse"){ %>
-
-        <label class="option">
-
-            <span class="option-text">
-                True
-            </span>
-
-            <input
-                type="radio"
-                name="question_<%= q.id %>"
-                value="True"
-                required
-            >
-
-        </label>
+                    </label>
 
 
-        <label class="option">
+                    <label class="option">
 
-            <span class="option-text">
-                False
-            </span>
+                        <span class="option-text">
+                            <%= q.optionB %>
+                        </span>
 
-            <input
-                type="radio"
-                name="question_<%= q.id %>"
-                value="False"
-            >
+                        <input
+                            type="radio"
+                            name="question_<%= q.id %>"
+                            value="B"
+                        >
 
-        </label>
+                    </label>
 
-    <% } %>
 
-</div>
+                    <label class="option">
 
-<% }) %>
+                        <span class="option-text">
+                            <%= q.optionC %>
+                        </span>
 
-<button>
+                        <input
+                            type="radio"
+                            name="question_<%= q.id %>"
+                            value="C"
+                        >
 
-Submit Quiz
+                    </label>
 
-</button>
 
-</form>
+                    <label class="option">
+
+                        <span class="option-text">
+                            <%= q.optionD %>
+                        </span>
+
+                        <input
+                            type="radio"
+                            name="question_<%= q.id %>"
+                            value="D"
+                        >
+
+                    </label>
+
+
+                <% } %>
+
+
+                <!-- TRUE / FALSE -->
+
+                <% if(q.type === "truefalse"){ %>
+
+                    <label class="option">
+
+                        <span class="option-text">
+                            True
+                        </span>
+
+                        <input
+                            type="radio"
+                            name="question_<%= q.id %>"
+                            value="True"
+                            required
+                        >
+
+                    </label>
+
+
+                    <label class="option">
+
+                        <span class="option-text">
+                            False
+                        </span>
+
+                        <input
+                            type="radio"
+                            name="question_<%= q.id %>"
+                            value="False"
+                        >
+
+                    </label>
+
+                <% } %>
+
+
+            </div>
+
+        <% }) %>
+
+
+        <button type="submit">
+            Submit Quiz
+        </button>
+
+
+    </form>
 
 </div>
 

@@ -9,128 +9,144 @@
 
 <body>
 
+<%- include("../partials/head",{title:"Quiz Result"}) %>
+
 <%- include("../partials/navbar") %>
 
 <div class="content">
 
-<h1>Your Result</h1>
+    <h1>Quiz Result</h1>
 
-<h2>
-
-Score: <%= score %> / <%= total %>
-
-</h2>
-
-<h3 class="persentshow">
-
-<%= Math.round(score*100/total) %>%
-
-</h3>
-
-<hr>
-
-<% results.forEach((r,index)=>{ %>
-
-<div class="result-card <%= r.correct ? 'correct' : 'wrong' %>">
-
-    <div class="question-number">
-
-        Question <%= index+1 %>
-
+    <div class="score">
+        Score: <%= score %> / <%= total %>
     </div>
 
-    <h3 class="question">
+    <div class="percentage">
+        <%= Math.round(score * 100 / total) %>%
+    </div>
 
-        <%= r.question %>
 
-    </h3>
+    <% results.forEach((r,index)=>{ %>
 
-    <div class="answer-box">
+        <div class="card">
 
-        <p>
+            <div class="question-number">
+                Question <%= index+1 %>
+            </div>
 
-            <strong>Your Answer</strong>
 
-        </p>
+            <h3 class="question">
+                <%= r.question %>
+            </h3>
 
-        <p>
 
-            <%= r.userAnswer || "No Answer" %>
+            <!-- QUESTION IMAGE -->
 
-            <% if(r.userAnswer){ %>
+            <% if(r.image){ %>
 
-                -
-
-                <%= r.options[r.userAnswer]%>
+                <img
+                    src="/uploads/images/<%= r.image %>"
+                    class="question-image"
+                    alt="Question image"
+                >
 
             <% } %>
 
-        </p>
 
-    </div>
+            <!-- YOUR ANSWER -->
 
-    <div class="answer-box">
+            <div class="answer-box">
 
-        <p>
+                <p>
+                    <strong>Your Answer</strong>
+                </p>
 
-            <strong>Correct Answer</strong>
+                <% if(r.userAnswer){ %>
 
-        </p>
+                    <p>
 
-        <p>
+                        <% if(r.type === "truefalse"){ %>
 
-            <%= r.correctAnswer %>
+                            <%= r.userAnswer %>
 
-            -
+                        <% } else { %>
 
-            <%= r.options[r.correctAnswer] %>
+                            <%= r.userAnswer %>
+                            -
+                            <%= r.options[r.userAnswer] %>
 
-        </p>
+                        <% } %>
 
-    </div>
+                    </p>
 
-    <% if(r.correct){ %>
+                <% } else { %>
 
-        <div class="status correct-status">
+                    <p>
+                        No Answer
+                    </p>
 
-            ✔ Correct
+                <% } %>
+
+            </div>
+
+
+            <!-- CORRECT ANSWER -->
+
+            <div class="answer-box">
+
+                <p>
+                    <strong>Correct Answer</strong>
+                </p>
+
+                <p>
+
+                    <% if(r.type === "truefalse"){ %>
+
+                        <%= r.correctAnswer %>
+
+                    <% } else { %>
+
+                        <%= r.correctAnswer %>
+                        -
+                        <%= r.options[r.correctAnswer] %>
+
+                    <% } %>
+
+                </p>
+
+            </div>
+
+
+            <!-- RESULT -->
+
+            <% if(r.correct){ %>
+
+                <div class="status correct-status">
+
+                    ✔ Correct
+
+                </div>
+
+            <% } else { %>
+
+                <div class="status wrong-status">
+
+                    ✘ Incorrect
+
+                </div>
+
+            <% } %>
 
         </div>
 
-    <% }else{ %>
+    <% }) %>
 
-        <div class="status wrong-status">
 
-            ✘ Incorrect
-
-        </div>
-
-    <% } %>
+    <a href="/quizzes">
+        Back to Quizzes
+    </a>
 
 </div>
-
-<% }) %>
-
-<a href="/quizzes">
-
-Back to Quizzes
-
-</a>
-
-</div>
-<div id="money-rain"></div>
-
-<script src="/js/moneyRain.js"></script>
-
-<% if((Math.round(score*100/total)) >= 85){ %>
-
-<script>
-
-startMoneyRain();
-
-</script>
-
-<% } %>
 </body>
 
 </html>

@@ -202,24 +202,88 @@ exports.updateQuestion = (req, res) => {
 
         if (err) return res.send(err.message);
 
+        let correctAnswer;
+
+        // Multiple choice
+        if (req.body.type === "multiple") {
+
+            correctAnswer = req.body.correctAnswer;
+
+        }
+
+        // True / False
+        if (req.body.type === "truefalse") {
+
+            correctAnswer = req.body.trueFalseAnswer;
+
+        }
+
+
+        let image = oldQuestion.image;
+
+
+        // Remove old image
+        if (req.body.removeImage === "1") {
+
+            image = null;
+
+        }
+
+
+        // New image uploaded
+        if (req.file) {
+
+            image = req.file.filename;
+
+        }
+
+
         const question = {
 
             question: req.body.question,
-            optionA: req.body.optionA,
-            optionB: req.body.optionB,
-            optionC: req.body.optionC,
-            optionD: req.body.optionD,
-            correctAnswer: req.body.correctAnswer
+
+            type: req.body.type,
+
+            image: image,
+
+            optionA:
+                req.body.type === "multiple"
+                    ? req.body.optionA
+                    : null,
+
+            optionB:
+                req.body.type === "multiple"
+                    ? req.body.optionB
+                    : null,
+
+            optionC:
+                req.body.type === "multiple"
+                    ? req.body.optionC
+                    : null,
+
+            optionD:
+                req.body.type === "multiple"
+                    ? req.body.optionD
+                    : null,
+
+            correctAnswer
 
         };
 
-        Question.update(req.params.id, question, err => {
 
-            if (err) return res.send(err.message);
+        Question.update(
+            req.params.id,
+            question,
+            err => {
 
-            res.redirect(`/admin/quizzes/${oldQuestion.quizId}/questions`);
+                if (err) return res.send(err.message);
 
-        });
+                res.redirect(
+                    `/admin/quizzes/${oldQuestion.quizId}/questions`
+                );
+
+            }
+        );
 
     });
 
@@ -263,18 +327,22 @@ exports.submit = (req, res) => {
 
     question: q.question,
 
-    options:{
+    type: q.type,
 
-        A:q.optionA,
-        B:q.optionB,
-        C:q.optionC,
-        D:q.optionD
+    image: q.image,
+
+    options: {
+
+        A: q.optionA,
+        B: q.optionB,
+        C: q.optionC,
+        D: q.optionD
 
     },
 
     userAnswer,
 
-    correctAnswer:q.correctAnswer,
+    correctAnswer: q.correctAnswer,
 
     correct
 
