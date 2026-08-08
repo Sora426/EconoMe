@@ -15,12 +15,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(session({
     secret: "econome_secret_key",
     resave: false,
-    saveUninitialized: false,
-    cookie: {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        maxAge: 1000 * 60 * 60 * 24
-    }
+    saveUninitialized: false
 }));
 
 app.use(express.urlencoded({ extended: true }));
