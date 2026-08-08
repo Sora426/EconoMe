@@ -41,6 +41,23 @@ class Quiz {
     );
 
 }
+static findById(id, callback) {
+
+    db.get(
+        `
+        SELECT *
+        FROM quizzes
+        WHERE id = ?
+        `,
+        [id],
+        (err, quiz) => {
+
+            callback(err, quiz);
+
+        }
+    );
+
+}
 
     static update(id, quiz, callback){
 

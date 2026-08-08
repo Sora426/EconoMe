@@ -165,15 +165,37 @@ exports.show = (req, res) => {
 
         if (err) return res.send(err.message);
 
+        if (!quiz) {
+            return res.status(404).send("Quiz not found");
+        }
+
+        // Premium quiz
+        if (quiz.isPremium) {
+
+            // Not logged in
+            if (!req.session.user) {
+                return res.redirect("/login");
+            }
+
+            // Logged in but not premium/admin
+            if (
+                req.session.user.isPremium !== 1 &&
+                req.session.user.role !== "admin"
+            ) {
+                return res.render("quizzes/premium", {
+                    quiz
+                });
+            }
+        }
+
+        // Free quiz OR premium/admin user
         Question.getByQuiz(req.params.id, (err, questions) => {
 
             if (err) return res.send(err.message);
-           
-            res.render("quizzes/show", {
 
+            res.render("quizzes/show", {
                 quiz,
                 questions
-
             });
 
         });
