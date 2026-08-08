@@ -13,6 +13,7 @@ const materialUpload = require("../config/materialUpload");
 const feedbackController = require("../controllers/feedbackController");
 const userController=require("../controllers/userController");
 const upload = require("../config/multer");
+const Quiz = require("../models/Quiz");
 router.get(
     "/users",
     admin,
