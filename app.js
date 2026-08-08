@@ -28,7 +28,10 @@ app.use(premium);
 app.use("/", require("./routes/index"));
 app.use("/", require("./routes/auth"));
 app.use(express.static("public"));
-app.use("/uploads", express.static("uploads"));
+app.use(
+    "/uploads",
+    express.static("/var/data/uploads")
+);
 app.use("/favorites",require("./routes/favorite"));
 app.use("/search", searchRoutes);
 app.use("/articles", require("./routes/article"));

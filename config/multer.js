@@ -2,9 +2,9 @@ const multer=require("multer");
 
 const storage=multer.diskStorage({
 
-destination:(req,file,cb)=>{
+destination:(req, file, cb) => {
 
-cb(null,"uploads/images");
+    cb(null, "/var/data/uploads/images");
 
 },
 
