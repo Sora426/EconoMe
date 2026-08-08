@@ -121,7 +121,7 @@ h1 {
     display: flex;
     gap: 25px;
     padding: 25px 0;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #d6d6d6;
 }
 
 .article-card img{
