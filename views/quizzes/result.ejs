@@ -163,23 +163,23 @@
         money.textContent = "💵";
 
         money.style.left = Math.random() * 100 + "vw";
-        money.style.fontSize = (20 + Math.random() * 25) + "px";
-        money.style.animationDuration = (3 + Math.random() * 4) + "s";
+        money.style.fontSize = (25 + Math.random() * 30) + "px";
+        money.style.animationDuration = (3 + Math.random() * 3) + "s";
 
         moneyRain.appendChild(money);
 
         setTimeout(() => {
             money.remove();
-        }, 700);
+        }, 6000);
     }
 
-    // Initial burst
-    for (let i = 0; i < 40; i++) {
-        setTimeout(createMoney, i * 100);
-    }
+    // Create dollars continuously
+    const rainInterval = setInterval(createMoney, 150);
 
-    // Keep raining
-    setInterval(createMoney, 250);
+    // Stop creating money after exactly 6 seconds
+    setTimeout(() => {
+        clearInterval(rainInterval);
+    }, 6000);
 </script>
 
 <% } %>
