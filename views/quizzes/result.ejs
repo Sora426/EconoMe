@@ -164,13 +164,13 @@
 
         money.style.left = Math.random() * 100 + "vw";
         money.style.fontSize = (20 + Math.random() * 25) + "px";
-        money.style.animationDuration = 10 + "s";
+        money.style.animationDuration = (3 + Math.random() * 4) + "s";
 
         moneyRain.appendChild(money);
 
         setTimeout(() => {
             money.remove();
-        }, 7000);
+        }, 700);
     }
 
     // Initial burst
