@@ -164,7 +164,7 @@
 
         money.style.left = Math.random() * 100 + "vw";
         money.style.fontSize = (20 + Math.random() * 25) + "px";
-        money.style.animationDuration = (3 + Math.random() * 4) + "s";
+        money.style.animationDuration = 10 + "s";
 
         moneyRain.appendChild(money);
 
@@ -179,7 +179,7 @@
     }
 
     // Keep raining
-    setInterval(createMoney, 25);
+    setInterval(createMoney, 250);
 </script>
 
 <% } %>
