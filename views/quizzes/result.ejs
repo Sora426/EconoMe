@@ -8,7 +8,11 @@
 </head>
 
 <body>
+<% const percentage = Math.round(score * 100 / total); %>
 
+<% if (percentage >= 80) { %>
+    <div id="money-rain"></div>
+<% } %>
 <%- include("../partials/head",{title:"Quiz Result"}) %>
 
 <%- include("../partials/navbar") %>
@@ -147,6 +151,38 @@
     </a>
 
 </div>
+<% if (percentage >= 80) { %>
+
+<script>
+    const moneyRain = document.getElementById("money-rain");
+
+    function createMoney() {
+        const money = document.createElement("div");
+
+        money.classList.add("money");
+        money.textContent = "💵";
+
+        money.style.left = Math.random() * 100 + "vw";
+        money.style.fontSize = (20 + Math.random() * 25) + "px";
+        money.style.animationDuration = (3 + Math.random() * 4) + "s";
+
+        moneyRain.appendChild(money);
+
+        setTimeout(() => {
+            money.remove();
+        }, 7000);
+    }
+
+    // Initial burst
+    for (let i = 0; i < 40; i++) {
+        setTimeout(createMoney, i * 100);
+    }
+
+    // Keep raining
+    setInterval(createMoney, 250);
+</script>
+
+<% } %>
 </body>
 
 </html>
