@@ -32,7 +32,10 @@ exports.handleWebhook = (req, res) => {
         const eventName = req.headers["x-event-name"];
 
         const payload = JSON.parse(req.body.toString());
-
+console.log(
+    "LEMON SQUEEZY PAYLOAD:",
+    JSON.stringify(payload, null, 2)
+);
         console.log("Lemon Squeezy event:", eventName);
 
         /*
