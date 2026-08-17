@@ -8,7 +8,7 @@ require("./models/initDatabase");
 const premium = require("./middleware/premium");
 const searchRoutes = require("./routes/search");
 const app = express();
-const lemonSqueezyRoutes = require("./routes/lemonSqueezyRoutes");
+const lemonSqueezyRoutes = require("./routes/lemon");
 
 app.post(
     "/webhook/lemons",
