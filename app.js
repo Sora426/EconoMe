@@ -9,7 +9,10 @@ const premium = require("./middleware/premium");
 const searchRoutes = require("./routes/search");
 const app = express();
 const lemonSqueezyRoutes = require("./routes/lemon");
-
+app.post("/webhook-test", (req, res) => {
+    console.log("POST REQUEST REACHED RENDER!");
+    res.status(200).send("POST works!");
+});
 app.post(
     "/webhook/lemons",
     express.raw({ type: "application/json" }),
