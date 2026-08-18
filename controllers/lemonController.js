@@ -4,6 +4,7 @@ const db = require("../config/database");
 const webhookSecret = process.env.LEMON_SQUEEZY_WEBHOOK_SECRET;
 
 exports.handleWebhook = (req, res) => {
+    console.log("🔥 LEMON WEBHOOK REACHED");
 
     try {
 
