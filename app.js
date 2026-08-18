@@ -13,7 +13,7 @@ app.get("/webhook/lemons", (req, res) => {
     res.send("Lemon Squeezy webhook endpoint is alive!");
 });
 app.post(
-    "/webhook/lemon",
+    "/webhook/lemons",
     express.raw({ type: "application/json" }),
     lemonSqueezyRoutes
 );
